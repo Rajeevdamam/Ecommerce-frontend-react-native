@@ -1,0 +1,67 @@
+"filename", "language", "TypeScript", "JSON", "TypeScript React", "JavaScript", "XML", "comment", "blank", "total"
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\.expo-shared\assets.json", "JSON", 0, 4, 0, 0, 0, 0, 1, 5
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\App.tsx", "TypeScript React", 0, 0, 34, 0, 0, 0, 6, 40
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\Banner.tsx", "TypeScript React", 0, 0, 75, 0, 0, 0, 7, 82
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\CartBadge.tsx", "TypeScript React", 0, 0, 24, 0, 0, 0, 6, 30
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\CartItemComponent.tsx", "TypeScript React", 0, 0, 157, 0, 0, 0, 12, 169
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\CategoryList.tsx", "TypeScript React", 0, 0, 96, 0, 0, 0, 5, 101
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\CustomButton.tsx", "TypeScript React", 0, 0, 40, 0, 0, 0, 4, 44
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\DebitCard.tsx", "TypeScript React", 0, 0, 175, 0, 0, 0, 8, 183
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\EditShipping.tsx", "TypeScript React", 0, 0, 129, 0, 0, 0, 8, 137
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\InputText.tsx", "TypeScript React", 0, 0, 55, 0, 0, 0, 4, 59
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\OrderSummary.tsx", "TypeScript React", 0, 0, 89, 0, 0, 0, 9, 98
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\PaymentMethod.tsx", "TypeScript React", 0, 0, 57, 0, 0, 0, 5, 62
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\PaymentSummary.tsx", "TypeScript React", 0, 0, 88, 0, 0, 0, 6, 94
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\Search.tsx", "TypeScript React", 0, 0, 48, 0, 0, 0, 5, 53
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\SearchList.tsx", "TypeScript React", 0, 0, 38, 0, 0, 0, 5, 43
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\SearchedComponent.tsx", "TypeScript React", 0, 0, 104, 0, 0, 0, 6, 110
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\ShippingSummary.tsx", "TypeScript React", 0, 0, 95, 0, 0, 0, 7, 102
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\SocialLoginButton.tsx", "TypeScript React", 0, 0, 37, 0, 0, 0, 6, 43
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\SvgEmptyCartComponent.tsx", "TypeScript React", 0, 0, 145, 0, 0, 1, 3, 149
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\SvgLoginComponent.tsx", "TypeScript React", 0, 0, 219, 0, 0, 0, 3, 222
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\SvgOrderConfirm.tsx", "TypeScript React", 0, 0, 141, 0, 0, 0, 3, 144
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\SvgRegisterComponent.tsx", "TypeScript React", 0, 0, 781, 0, 0, 0, 3, 784
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Components\SvgShippingComponent.tsx", "TypeScript React", 0, 0, 211, 0, 0, 1, 3, 215
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Constants\colors.ts", "TypeScript", 12, 0, 0, 0, 0, 0, 1, 13
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Navigation\BottomNavigator.tsx", "TypeScript React", 0, 0, 90, 0, 0, 0, 8, 98
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Navigation\CartNavigation.tsx", "TypeScript React", 0, 0, 86, 0, 0, 0, 6, 92
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Navigation\CheckoutNavigation.tsx", "TypeScript React", 0, 0, 66, 0, 0, 0, 7, 73
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Navigation\Navigation.tsx", "TypeScript React", 0, 0, 15, 0, 0, 0, 4, 19
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Navigation\RootNavigator.tsx", "TypeScript React", 0, 0, 115, 0, 0, 0, 6, 121
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Navigation\UserNavigator.tsx", "TypeScript React", 0, 0, 30, 0, 0, 0, 5, 35
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Redux\Actions\ShippingActions.ts", "TypeScript", 13, 0, 0, 0, 0, 0, 3, 16
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Redux\Actions\cartActions.ts", "TypeScript", 29, 0, 0, 0, 0, 0, 5, 34
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Redux\Actions\paymentActions.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 2, 9
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Redux\Reducers\cartItem.ts", "TypeScript", 53, 0, 0, 0, 0, 0, 4, 57
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Redux\Reducers\paymentDetails.ts", "TypeScript", 17, 0, 0, 0, 0, 0, 4, 21
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Redux\Reducers\shippingDetails.ts", "TypeScript", 25, 0, 0, 0, 0, 0, 4, 29
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Redux\constants.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Redux\store.ts", "TypeScript", 11, 0, 0, 0, 0, 0, 4, 15
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\Cart\Cart.tsx", "TypeScript React", 0, 0, 117, 0, 0, 0, 13, 130
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\Checkout\Checkout.tsx", "TypeScript React", 0, 0, 197, 0, 0, 0, 16, 213
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\Checkout\Confirm.tsx", "TypeScript React", 0, 0, 128, 0, 0, 0, 16, 144
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\Checkout\Payment.tsx", "TypeScript React", 0, 0, 170, 0, 0, 0, 19, 189
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\Products\ProductCard.tsx", "TypeScript React", 0, 0, 150, 0, 0, 2, 11, 163
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\Products\ProductContainer.tsx", "TypeScript React", 0, 0, 228, 0, 0, 16, 21, 265
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\Products\ProductDetail.tsx", "TypeScript React", 0, 0, 225, 0, 0, 0, 8, 233
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\Products\ProductList.tsx", "TypeScript React", 0, 0, 40, 0, 0, 0, 7, 47
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\Products\Products.ts", "TypeScript", 9, 0, 0, 0, 0, 0, 4, 13
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\User\Login.tsx", "TypeScript React", 0, 0, 115, 0, 0, 0, 11, 126
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\User\Register.tsx", "TypeScript React", 0, 0, 113, 0, 0, 0, 10, 123
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Screens\User\UserProfile.tsx", "TypeScript React", 0, 0, 11, 0, 0, 0, 4, 15
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Utils\cartFunctionality.ts", "TypeScript", 24, 0, 0, 0, 0, 0, 3, 27
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\Utils\isObjectEmpty.ts", "TypeScript", 6, 0, 0, 0, 0, 0, 1, 7
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\app.json", "JSON", 0, 16, 0, 0, 0, 31, 0, 47
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\assets\Fill out-amico.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 1
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\assets\Forgot password-bro (1).svg", "XML", 0, 0, 0, 0, 1, 0, 0, 1
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\assets\Mobile login-pana (1).svg", "XML", 0, 0, 0, 0, 1, 0, 0, 1
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\assets\common\baseurl.ts", "TypeScript", 3, 0, 0, 0, 0, 6, 5, 14
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\assets\countries.json", "JSON", 0, 55, 0, 0, 0, 0, 1, 56
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\assets\paymentMethods.json", "JSON", 0, 26, 0, 0, 0, 0, 1, 27
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\assets\undraw_Order_confirmed_re_g0if (1).svg", "XML", 0, 0, 0, 0, 1, 0, 0, 1
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\assets\undraw_Order_confirmed_re_g0if.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 1
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\babel.config.js", "JavaScript", 0, 0, 0, 6, 0, 0, 1, 7
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\package-lock.json", "JSON", 0, 10727, 0, 0, 0, 0, 1, 10728
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\package.json", "JSON", 0, 59, 0, 0, 0, 0, 1, 60
+"c:\Users\M1064338\OneDrive - Mindtree Limited\Desktop\React Native\e-commerce\front-end\tsconfig.json", "JSON", 0, 6, 0, 0, 0, 0, 1, 7
+"Total", "-", 216, 10893, 4734, 6, 5, 57, 346, 16257

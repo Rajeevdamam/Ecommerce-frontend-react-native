@@ -1,0 +1,26 @@
+{
+	"card": {
+		"name": "Card Payment",
+		"value": "card",
+		"imageUri": "https://www.pngmart.com/files/3/Credit-Card-Visa-And-Master-Card-PNG-Transparent-Image.png",
+		"cardDetail": "+4 **** **** 1234"
+	},
+	"upi": {
+		"name": "UPI",
+		"value": "upi",
+		"imageUri": "https://www.kindpng.com/picc/m/279-2797957_upi-icon-png-image-free-download-searchpng-logo.png",
+		"cardDetail": "example@upi"
+	},
+	"gpay": {
+		"name": "Google Pay",
+		"value": "gpay",
+		"imageUri": "https://www.pngmart.com/files/16/official-Google-Logo-PNG-Image.png",
+		"cardDetail": "example@gpay"
+	},
+	"cash": {
+		"name": "Cash on Delivery",
+		"value": "cash",
+		"imageUri": "https://static.thenounproject.com/png/1914661-200.png",
+		"cardDetail": "NA"
+	}
+}
