@@ -22,6 +22,7 @@ const Cart = (props: any) => {
 	let items = useSelector((state: any) => state.cartItems.cartData);
 
 	items = Object.keys(items).map((id: any) => items[id]);
+	const [loading, setLoading] = useState(false);
 
 	const totalPrice = items.reduce(
 		(a: number, b: any) => a + b.price * b.quantity,
@@ -37,17 +38,21 @@ const Cart = (props: any) => {
 	);
 
 	const moveToCheckout = () => {
+		setLoading(true);
 		if (!isObjEmpty(shippingDetails)) {
 			if (!isObjEmpty(paymentDetails)) {
 				setTimeout(() => {
+					setLoading(false);
 					props.navigation.navigate("Checkout", { screen: "Confirm" });
 				}, 500);
 			} else {
 				setTimeout(() => {
+					setLoading(false);
 					props.navigation.navigate("Checkout", { screen: "Payment" });
 				}, 500);
 			}
 		} else {
+			setLoading(false);
 			props.navigation.navigate("Checkout");
 		}
 	};
@@ -93,6 +98,8 @@ const Cart = (props: any) => {
 				</View>
 
 				<CustomButton
+					loading={loading}
+					iconVisible={true}
 					disabled={items.length === 0}
 					styles={styles.checkout}
 					styleText={styles.checkoutText}
@@ -117,13 +124,13 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 10,
 		marginBottom: 20,
 	},
-	totalText: { fontSize: 24 },
+	totalText: { fontSize: 24, fontFamily: "Montserrat-Regular" },
 	totalPrice: { fontSize: 24, color: colors.colorGreen, fontWeight: "bold" },
 	checkout: {},
 	checkoutText: {},
 	emptyCartText: {
 		fontSize: 20,
 		color: colors.colorSecondary,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 	},
 });

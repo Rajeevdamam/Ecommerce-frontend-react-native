@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		color: colors.colorSecondary,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		fontSize: 18,
 		marginBottom: 5,
 	},
@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
 		color: "grey",
 		fontSize: 14,
 		marginBottom: 5,
+		fontFamily: "Montserrat-Regular",
 	},
 	quantityAdjuster: {
 		flexDirection: "row",
@@ -159,6 +160,7 @@ const styles = StyleSheet.create({
 	quantity: {
 		marginHorizontal: 10,
 		fontSize: 16,
+		fontFamily: "Montserrat-Regular",
 		color: colors.colorSecondary,
 	},
 	titleAndDeleteCart: {

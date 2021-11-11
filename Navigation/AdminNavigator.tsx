@@ -1,40 +1,163 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import ProductsAccess from "./../Screens/Admin/ProductsAccess";
 import CategoriesAccess from "../Screens/Admin/CategoriesAccess";
 import OrdersAccess from "../Screens/Admin/OrdersAccess";
 import ProductsForm from "./../Screens/Admin/ProductsForm";
-const Stack = createStackNavigator();
+import AntDesign from "react-native-vector-icons/AntDesign";
+import colors from "../Constants/colors";
+
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import Dashboard from "../Screens/Admin/Dashboard";
+
+const Drawer = createDrawerNavigator();
+// const Stack = createStackNavigator();
 
 const AdminNavigator = () => {
 	return (
-		<Stack.Navigator
+		<Drawer.Navigator
 			screenOptions={{
 				headerStyle: { elevation: 0, shadowOpacity: 0, borderBottomWidth: 0 },
+				drawerActiveBackgroundColor: colors.secondaryTransparent,
+				drawerActiveTintColor: colors.colorPrimary,
+				drawerInactiveTintColor: colors.colorSecondary,
+				drawerItemStyle: {
+					borderRadius: 7,
+				},
 			}}
 		>
-			<Stack.Screen
+			<Drawer.Screen
+				name="Dashboard"
+				component={Dashboard}
+				options={({ navigation }) => ({
+					title: "Dashboard",
+					headerTitleStyle: {
+						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
+					},
+					headerTitleAlign: "center",
+					headerLeft: () => (
+						<TouchableOpacity
+							style={{
+								marginLeft: 10,
+							}}
+							onPress={() => navigation.openDrawer()}
+						>
+							<AntDesign
+								name="appstore-o"
+								size={24}
+								color={colors.colorSecondary}
+							/>
+						</TouchableOpacity>
+					),
+				})}
+			/>
+
+			<Drawer.Screen
 				name="Products"
 				component={ProductsAccess}
-				options={{ title: "Products", headerTitleAlign: "center" }}
+				options={({ navigation }) => ({
+					title: "Products",
+					headerTitleAlign: "center",
+					headerTitleStyle: {
+						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
+					},
+					headerLeft: () => (
+						<TouchableOpacity
+							style={{
+								marginLeft: 10,
+							}}
+							onPress={() => navigation.openDrawer()}
+						>
+							<AntDesign
+								name="appstore-o"
+								size={24}
+								color={colors.colorSecondary}
+							/>
+						</TouchableOpacity>
+					),
+				})}
 			/>
-			<Stack.Screen
+			<Drawer.Screen
 				name="Category"
 				component={CategoriesAccess}
-				options={{ title: "Category", headerTitleAlign: "center" }}
+				options={({ navigation }) => ({
+					title: "Category",
+					headerTitleStyle: {
+						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
+					},
+					headerTitleAlign: "center",
+					headerLeft: () => (
+						<TouchableOpacity
+							style={{
+								marginLeft: 10,
+							}}
+							onPress={() => navigation.openDrawer()}
+						>
+							<AntDesign
+								name="appstore-o"
+								size={24}
+								color={colors.colorSecondary}
+							/>
+						</TouchableOpacity>
+					),
+				})}
 			/>
-			<Stack.Screen
+			<Drawer.Screen
 				name="Orders"
 				component={OrdersAccess}
-				options={{ title: "Orders", headerTitleAlign: "center" }}
+				options={({ navigation }) => ({
+					title: "Orders",
+					headerTitleStyle: {
+						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
+					},
+					headerTitleAlign: "center",
+					headerLeft: () => (
+						<TouchableOpacity
+							style={{
+								marginLeft: 10,
+							}}
+							onPress={() => navigation.openDrawer()}
+						>
+							<AntDesign
+								name="appstore-o"
+								size={24}
+								color={colors.colorSecondary}
+							/>
+						</TouchableOpacity>
+					),
+				})}
 			/>
-			<Stack.Screen
+			<Drawer.Screen
 				name="ProductsForm"
 				component={ProductsForm}
-				options={{ title: "Product Form", headerTitleAlign: "center" }}
+				options={({ navigation }) => ({
+					title: "Product Form",
+					headerTitleStyle: {
+						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
+					},
+					headerTitleAlign: "center",
+					headerLeft: () => (
+						<TouchableOpacity
+							style={{
+								marginLeft: 10,
+							}}
+							onPress={() => navigation.openDrawer()}
+						>
+							<AntDesign
+								name="appstore-o"
+								size={24}
+								color={colors.colorSecondary}
+							/>
+						</TouchableOpacity>
+					),
+				})}
 			/>
-		</Stack.Navigator>
+		</Drawer.Navigator>
 	);
 };
 

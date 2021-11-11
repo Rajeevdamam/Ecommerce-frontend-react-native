@@ -7,15 +7,18 @@ import {
 	ActivityIndicator,
 	Dimensions,
 	Keyboard,
+	Image,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useFocusEffect } from "@react-navigation/core";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getProducts } from "./ProductsOperations";
+import { deleteProduct, getProducts } from "./ProductsOperations";
 import Search from "./../../Components/Search";
 import colors from "../../Constants/colors";
 import { Heading, HStack, Spinner } from "native-base";
 import ListItem from "./ListItem";
+import { DataTable } from "react-native-paper";
+import Toast from "react-native-toast-message";
 
 const { width, height } = Dimensions.get("window");
 
@@ -72,6 +75,8 @@ const ProductsAccess = (props: any) => {
 				setProductList(res.data.data);
 				setProductFilter(res.data.data);
 				setLoading(false);
+				setSearchText("");
+				setToken("");
 			});
 
 			return () => {
@@ -99,6 +104,21 @@ const ProductsAccess = (props: any) => {
 				)
 			);
 		}
+	};
+
+	const handleDelete = (id: string) => {
+		deleteProduct(id)
+			.then((res: any) => {
+				const products = productFilter.filter((item: any) => item._id !== id);
+				setProductFilter(products);
+			})
+			.catch((err: any) => {
+				Toast.show({
+					topOffset: 60,
+					type: "error",
+					text1: "Something went wrong",
+				});
+			});
 	};
 
 	return (
@@ -130,15 +150,65 @@ const ProductsAccess = (props: any) => {
 					</HStack>
 				</View>
 			) : (
-				<FlatList
-					data={productFilter}
-					ListHeaderComponent={ListHeader}
-					contentContainerStyle={{ paddingBottom: 10, flexGrow: 1 }}
-					renderItem={({ item, index }) => (
-						<ListItem {...item} navigation={props.navigation} index={index} />
-					)}
-					keyExtractor={(item: any) => item._id}
-				/>
+				<View style={{ flex: 1 }}>
+					{/* <FlatList
+						data={productFilter}
+						ListHeaderComponent={ListHeader}
+						contentContainerStyle={{ paddingBottom: 10, flexGrow: 1 }}
+						renderItem={({ item, index }) => (
+							<ListItem {...item} navigation={props.navigation} index={index} />
+						)}
+						keyExtractor={(item: any) => item._id}
+					/> */}
+
+					<DataTable>
+						<DataTable.Header>
+							<DataTable.Title
+								style={{ justifyContent: "space-around", padding: 3 }}
+							>
+								Image
+							</DataTable.Title>
+							<DataTable.Title
+								style={{ justifyContent: "space-around", padding: 3 }}
+							>
+								Brand
+							</DataTable.Title>
+							<DataTable.Title
+								style={{ justifyContent: "space-around", padding: 3 }}
+							>
+								Name
+							</DataTable.Title>
+							<DataTable.Title
+								style={{ justifyContent: "space-around", padding: 3 }}
+							>
+								Category
+							</DataTable.Title>
+							<DataTable.Title
+								style={{ justifyContent: "space-around", padding: 3 }}
+								numeric
+							>
+								Price
+							</DataTable.Title>
+						</DataTable.Header>
+
+						<FlatList
+							data={productFilter}
+							contentContainerStyle={{
+								paddingBottom: 50,
+								flexGrow: 1,
+							}}
+							renderItem={({ item, index }) => (
+								<ListItem
+									{...item}
+									navigation={props.navigation}
+									index={index}
+									onDelete={handleDelete}
+								/>
+							)}
+							keyExtractor={(item: any) => item._id}
+						/>
+					</DataTable>
+				</View>
 			)}
 		</View>
 	);

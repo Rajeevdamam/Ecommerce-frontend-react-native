@@ -14,19 +14,22 @@ const { width, height } = Dimensions.get("window");
 
 const UserDetailList = (props: any) => {
 	return (
-		<TouchableOpacity style={styles.mainContainer}>
+		<TouchableOpacity
+			style={styles.mainContainer}
+			onPress={() => props.navigation.navigate(props.screen)}
+		>
 			<View style={styles.avatarContainer}>
 				<Avatar
 					rounded
-					size={40}
+					size={45}
+					avatarStyle={{ resizeMode: "contain" }}
 					source={{
 						uri: props.image,
 					}}
-					avatarStyle={{ backgroundColor: "transparent" }}
 				/>
 			</View>
 			<View style={styles.detailContainer}>
-				<Text>{props.title}</Text>
+				<Text style={{ fontFamily: "Montserrat-Regular" }}>{props.title}</Text>
 			</View>
 			<View style={styles.rightArrowContainer}>
 				<AntDesign name="right" size={20} color={colors.navIconColor} />
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		paddingVertical: 20,
+		paddingVertical: 10,
 	},
 	avatarContainer: {},
 	detailContainer: {

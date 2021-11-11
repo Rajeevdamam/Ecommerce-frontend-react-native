@@ -9,4 +9,5 @@ export default {
 	shippingSummaryBg: "#f4eff9",
 	shippingSummaryTextColor: "#b8a9c5",
 	colorGreen: "#6ad701",
+	secondaryTransparent: "rgba(18,38,54,0.9)",
 };

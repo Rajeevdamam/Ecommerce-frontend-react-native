@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		color: colors.colorSecondary,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		fontSize: 18,
 		marginBottom: 5,
 	},
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
 	category: {
 		color: "grey",
 		fontSize: 14,
+		fontFamily: "Montserrat-Regular",
 		marginBottom: 5,
 	},
 	rating: {
@@ -92,6 +93,7 @@ const styles = StyleSheet.create({
 	},
 	rate: {
 		fontSize: 14,
+		fontFamily: "Montserrat-Regular",
 		marginHorizontal: 3,
 		color: "orange",
 	},

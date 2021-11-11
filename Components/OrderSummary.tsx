@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 	},
 	heading: {
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		fontSize: 16,
 		color: colors.shippingSummaryTextColor,
 	},
@@ -82,13 +82,18 @@ const styles = StyleSheet.create({
 	details: {
 		color: colors.shippingSummaryTextColor,
 		fontSize: 14,
+		fontFamily: "Montserrat-Regular",
 	},
 	total: {
 		width: "100%",
 		flexDirection: "row",
 		justifyContent: "space-between",
 	},
-	totalText: { fontSize: 18, color: colors.shippingSummaryTextColor },
+	totalText: {
+		fontSize: 18,
+		color: colors.shippingSummaryTextColor,
+		fontFamily: "Montserrat-Regular",
+	},
 	totalPrice: {
 		fontSize: 18,
 		color: colors.shippingSummaryTextColor,

@@ -16,6 +16,7 @@ let { height, width } = Dimensions.get("window");
 
 const ForgotPassword = (props: any) => {
 	const [email, setEmail] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	return (
 		<View style={styles.mainContainer}>
@@ -40,6 +41,8 @@ const ForgotPassword = (props: any) => {
 					onChangeText={(text: string) => setEmail(text)}
 				/>
 				<CustomButton
+					loading={loading}
+					iconVisible={false}
 					disabled={false}
 					styles={{
 						width: "100%",
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
 	},
 	pageHeading: {
 		fontSize: 28,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		marginBottom: 30,
 		alignSelf: "center",
 		color: colors.colorSecondary,

@@ -28,9 +28,16 @@ const SearchList = (props: any) => {
 					keyExtractor={(item: any) => "#" + item.id}
 				/>
 			) : (
-				<Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
+				<Text
+					style={{
+						fontSize: 16,
+						textAlign: "center",
+						color: "grey",
+						fontFamily: "Montserrat-Regular",
+					}}
+				>
 					No Products found for "
-					<Text style={{ fontWeight: "bold" }}>{searchText}</Text>"
+					<Text style={{ fontFamily: "Montserrat-Bold" }}>{searchText}</Text>"
 				</Text>
 			)}
 		</View>

@@ -24,6 +24,7 @@ const CartNavigation = () => {
 					headerTitleAlign: "center",
 					headerTitleStyle: {
 						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
 					},
 					headerStyle: {
 						elevation: 0,

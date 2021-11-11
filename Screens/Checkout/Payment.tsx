@@ -31,6 +31,8 @@ const Payment = (props: any) => {
 
 	const [cardVisible, setCardVisible] = useState(false);
 
+	const [loading, setLoading] = useState(false);
+
 	const handleCardNumber = (text: any) => {
 		if (text.length < 20) {
 			let formattedtext = text.split(" ").join("");
@@ -84,12 +86,14 @@ const Payment = (props: any) => {
 	};
 
 	const onPayment = () => {
+		setLoading(true);
 		if (!isObjEmpty(cardData)) {
 			dispatch(addToPayment(cardData));
 		} else {
 			dispatch(addToPayment(paymentMethod[value]));
 		}
 		setTimeout(() => {
+			setLoading(false);
 			props.navigation.navigate("Confirm");
 		}, 500);
 	};
@@ -161,6 +165,8 @@ const Payment = (props: any) => {
 					}}
 				>
 					<CustomButton
+						loading={loading}
+						iconVisible={true}
 						disabled={false}
 						styles={{
 							width: "90%",

@@ -39,7 +39,6 @@ export default Search;
 const styles = StyleSheet.create({
 	searchBar: {
 		flexDirection: "row",
-		// flex: 1,
 		backgroundColor: Colors.colorTeritiary,
 		paddingVertical: 18,
 		marginVertical: 10,
@@ -48,5 +47,6 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		flex: 1,
+		fontFamily: "Montserrat-Regular",
 	},
 });

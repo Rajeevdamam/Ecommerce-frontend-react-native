@@ -7,7 +7,13 @@ import { isObjEmpty } from "./../../Utils/isObjectEmpty";
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
-export const loginUser = async (dispatch: any, data: any) => {
+export const loginUser = async (
+	dispatch: any,
+	data: any,
+	setLoading: any,
+	setEmail: any,
+	setPassword: any
+) => {
 	try {
 		let user: any = await axios.post(
 			`${baseURL}user/login`,
@@ -25,14 +31,17 @@ export const loginUser = async (dispatch: any, data: any) => {
 			let loggedInUser = await AsyncStorage.getItem("user");
 
 			Toast.show({
-				position: "bottom",
-				bottomOffset: 60,
+				topOffset: 60,
 				type: "success",
 				text1: "Logged in Successfully",
 			});
 			dispatch(setCurrentUser(!isObjEmpty(loggedInUser), loggedInUser, decode));
+			setLoading(false);
+			setEmail("");
+			setPassword("");
 		} else {
 			logoutUser(dispatch);
+			setLoading(false);
 		}
 	} catch (error: any) {
 		Toast.show({
@@ -41,6 +50,8 @@ export const loginUser = async (dispatch: any, data: any) => {
 			text1: "Login Unsuccessfull",
 			text2: "Please Try Again",
 		});
+		setLoading(false);
+
 		logoutUser(dispatch);
 	}
 };

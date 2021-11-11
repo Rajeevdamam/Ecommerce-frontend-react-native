@@ -26,6 +26,8 @@ const Register = (props: any) => {
 	const [phone, setPhone] = useState("");
 	const [error, setError] = useState("");
 
+	const [loading, setLoading] = useState(false);
+
 	const register = () => {
 		if (
 			email === "" ||
@@ -44,7 +46,7 @@ const Register = (props: any) => {
 				passwordHash: password,
 				phone,
 			};
-
+			setLoading(true);
 			registerUser(user)
 				.then((data: any) => {
 					Toast.show({
@@ -54,10 +56,12 @@ const Register = (props: any) => {
 						text2: "Please login to your Account",
 					});
 					setTimeout(() => {
+						setLoading(false);
 						props.navigation.navigate("Login");
 					}, 500);
 				})
 				.catch((error: any) => {
+					setLoading(false);
 					Toast.show({
 						topOffset: 60,
 						type: "error",
@@ -131,6 +135,8 @@ const Register = (props: any) => {
 					/>
 					{error.length > 0 && <ErrorComponent message={error} />}
 					<CustomButton
+						loading={loading}
+						iconVisible={false}
 						disabled={false}
 						styles={{
 							width: "100%",
@@ -156,7 +162,7 @@ const styles = StyleSheet.create({
 	},
 	registerHeading: {
 		fontSize: 28,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		marginBottom: 10,
 		alignSelf: "center",
 		color: colors.colorSecondary,
@@ -173,6 +179,7 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		marginVertical: 20,
 		color: colors.navIconColor,
+		fontFamily: "Montserrat-Regular",
 	},
 	center: {
 		flexDirection: "row",

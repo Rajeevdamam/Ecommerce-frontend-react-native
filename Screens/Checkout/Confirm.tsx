@@ -20,6 +20,8 @@ const Confirm = (props: any) => {
 
 	const toast = useToast();
 
+	const [loading, setLoading] = useState(false);
+
 	cartItem = Object.keys(cartItem).map((id: any) => cartItem[id]);
 
 	const totalPrice = cartItem.reduce(
@@ -75,7 +77,7 @@ const Confirm = (props: any) => {
 								paddingLeft: 20,
 								color: colors.colorSecondary,
 								fontSize: 18,
-								fontWeight: "bold",
+								fontFamily: "Montserrat-Bold",
 							}}
 						>
 							Cart Items
@@ -103,6 +105,8 @@ const Confirm = (props: any) => {
 					<OrderSummary totalPrice={totalPrice} />
 					<View style={styles.container}>
 						<CustomButton
+							loading={loading}
+							iconVisible={true}
 							disabled={false}
 							styles={styles.confirm}
 							styleText={styles.confirmText}

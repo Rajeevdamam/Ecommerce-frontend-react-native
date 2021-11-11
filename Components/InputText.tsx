@@ -23,7 +23,7 @@ const InputText = (props: any) => {
 				/>
 			)}
 			<TextInput
-				style={{ flex: 1 }}
+				style={{ flex: 1, fontFamily: "Montserrat-Regular" }}
 				placeholder={props.placeholder}
 				autoCorrect={props.autoCorrect}
 				value={props.value}
@@ -35,7 +35,12 @@ const InputText = (props: any) => {
 			/>
 			{props.forgot && (
 				<TouchableOpacity onPress={() => props.onPress()}>
-					<Text style={{ color: colors.colorSecondary, fontWeight: "bold" }}>
+					<Text
+						style={{
+							color: colors.colorSecondary,
+							fontFamily: "Montserrat-Bold",
+						}}
+					>
 						Forgot?
 					</Text>
 				</TouchableOpacity>

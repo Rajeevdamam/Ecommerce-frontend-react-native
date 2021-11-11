@@ -33,6 +33,7 @@ const ProductDetail = (props: any) => {
 			setProductImages([]);
 		};
 	}, []);
+
 	return (
 		<View style={{ flex: 1, backgroundColor: colors.colorPrimary }}>
 			<ScrollView style={{ flex: 1 }}>
@@ -63,8 +64,11 @@ const ProductDetail = (props: any) => {
 						})}
 					</Swiper>
 				</View>
+
 				<View style={styles.nameRatingAndPriceContainer}>
-					<Text style={{ color: "grey" }}>{item.category.name}</Text>
+					<Text style={{ color: "grey", fontFamily: "Montserrat-Regular" }}>
+						{item.category.name}
+					</Text>
 					<Text style={styles.productTitle}>{item.title}</Text>
 					<View style={styles.rating}>
 						<View
@@ -85,7 +89,12 @@ const ProductDetail = (props: any) => {
 							</View>
 						</View>
 
-						<Text style={{ color: colors.colorSecondary }}>
+						<Text
+							style={{
+								color: colors.colorSecondary,
+								fontFamily: "Montserrat-Regular",
+							}}
+						>
 							({item.numReviews} Reviews)
 						</Text>
 					</View>
@@ -143,13 +152,13 @@ const styles = StyleSheet.create({
 	},
 	productTitle: {
 		fontSize: 22,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		color: colors.colorSecondary,
 	},
 	nameRatingAndPriceContainer: {
 		marginHorizontal: 20,
 		marginVertical: 10,
-		height: width / 3,
+		height: width / 2.5,
 		justifyContent: "space-between",
 	},
 	rating: {
@@ -163,19 +172,21 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	price: {
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		fontSize: 16,
 		color: "orange",
 	},
 	stockStatus: {
 		color: colors.colorGreen,
+		fontFamily: "Montserrat-Regular",
 	},
 	outOfStockStatus: {
 		color: "red",
+		fontFamily: "Montserrat-Regular",
 	},
 	descriptionHeader: {
 		fontSize: 18,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		color: colors.colorSecondary,
 	},
 	descriptionContainer: {
@@ -186,6 +197,7 @@ const styles = StyleSheet.create({
 		marginVertical: 10,
 		textAlign: "justify",
 		color: "grey",
+		fontFamily: "Montserrat-Regular",
 	},
 	bottomContainer: {
 		flexDirection: "row",
@@ -217,7 +229,7 @@ const styles = StyleSheet.create({
 	addToCartText: {
 		color: colors.colorPrimary,
 		fontSize: 18,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 	},
 	cartIcon: {
 		borderRadius: 50,
@@ -227,6 +239,6 @@ const styles = StyleSheet.create({
 	rate: {
 		marginRight: 10,
 		fontSize: 20,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 	},
 });

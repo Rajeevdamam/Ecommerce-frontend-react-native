@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
 		backgroundColor: Colors.colorTeritiary,
 		borderBottomLeftRadius: 15,
 		borderBottomRightRadius: 15,
+		overflow: "hidden",
 	},
 	image: {
 		width: "100%",
@@ -107,12 +108,13 @@ const styles = StyleSheet.create({
 
 	title: {
 		color: Colors.colorSecondary,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		fontSize: 14,
 	},
 	category: {
 		color: "grey",
 		fontSize: 12,
+		fontFamily: "Montserrat-Regular",
 	},
 
 	price: {
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
 	},
 	rate: {
 		fontSize: 12,
+		fontFamily: "Montserrat-Regular",
 		marginHorizontal: 6,
 		color: "orange",
 	},

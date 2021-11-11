@@ -18,6 +18,7 @@ const EditShipping = (props: any) => {
 	const [city, setCity] = useState<any>(shippingDetails.city);
 	const [zip, setZip] = useState<any>(shippingDetails.zip);
 	const [phone, setPhone] = useState<any>(shippingDetails.phone);
+	const [loading, setLoading] = useState(false);
 
 	const onSave = () => {
 		const shipping = {
@@ -28,7 +29,9 @@ const EditShipping = (props: any) => {
 			shippingAddress2: address2,
 			zip,
 		};
+		setLoading(true);
 		dispatch(editShipping(shipping));
+		setLoading(false);
 		props.closeModal();
 	};
 
@@ -50,10 +53,14 @@ const EditShipping = (props: any) => {
 					</Modal.Header>
 					<Modal.Body>
 						<FormControl>
-							<FormControl.Label color={colors.colorSecondary}>
+							<FormControl.Label
+								color={colors.colorSecondary}
+								fontFamily="Montserrat-Regular"
+							>
 								Phone
 							</FormControl.Label>
 							<Input
+								fontFamily="Montserrat-Regular"
 								placeholder="Phone"
 								value={phone}
 								onChangeText={(text: any) => {
@@ -62,10 +69,14 @@ const EditShipping = (props: any) => {
 							/>
 						</FormControl>
 						<FormControl mt="3">
-							<FormControl.Label color={colors.colorSecondary}>
+							<FormControl.Label
+								color={colors.colorSecondary}
+								fontFamily="Montserrat-Regular"
+							>
 								Shipping Address 1
 							</FormControl.Label>
 							<Input
+								fontFamily="Montserrat-Regular"
 								placeholder="Shipping Address 1"
 								value={address}
 								onChangeText={(text: any) => {
@@ -74,10 +85,14 @@ const EditShipping = (props: any) => {
 							/>
 						</FormControl>
 						<FormControl mt="3">
-							<FormControl.Label color={colors.colorSecondary}>
+							<FormControl.Label
+								color={colors.colorSecondary}
+								fontFamily="Montserrat-Regular"
+							>
 								Shipping Address 2
 							</FormControl.Label>
 							<Input
+								fontFamily="Montserrat-Regular"
 								placeholder="Shipping Address 2"
 								value={address2}
 								onChangeText={(text: any) => {
@@ -86,10 +101,14 @@ const EditShipping = (props: any) => {
 							/>
 						</FormControl>
 						<FormControl mt="3">
-							<FormControl.Label color={colors.colorSecondary}>
+							<FormControl.Label
+								color={colors.colorSecondary}
+								fontFamily="Montserrat-Regular"
+							>
 								City
 							</FormControl.Label>
 							<Input
+								fontFamily="Montserrat-Regular"
 								placeholder="City"
 								value={city}
 								onChangeText={(text: any) => {
@@ -98,10 +117,14 @@ const EditShipping = (props: any) => {
 							/>
 						</FormControl>
 						<FormControl mt="3">
-							<FormControl.Label color={colors.colorSecondary}>
+							<FormControl.Label
+								color={colors.colorSecondary}
+								fontFamily="Montserrat-Regular"
+							>
 								Zip
 							</FormControl.Label>
 							<Input
+								fontFamily="Montserrat-Regular"
 								placeholder="Zip"
 								value={zip}
 								onChangeText={(text: any) => {
@@ -112,6 +135,8 @@ const EditShipping = (props: any) => {
 					</Modal.Body>
 					<Modal.Footer>
 						<CustomButton
+							loading={loading}
+							iconVisible={true}
 							disabled={false}
 							styles={styles.confirm}
 							styleText={styles.confirmText}

@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import colors from "../Constants/colors";
 import { useRoute } from "@react-navigation/native";
+import { HStack, Spinner } from "native-base";
 
 const CustomButton = (props: any) => {
 	const route = useRoute();
@@ -13,10 +14,21 @@ const CustomButton = (props: any) => {
 			style={[styles.submit, { ...props.styles }]}
 			onPress={() => props.onPress()}
 		>
-			<Text style={[styles.submitText, { ...props.styleText }]}>
-				{props.text}
-			</Text>
-			{route.name !== "Login" && route.name !== "Register" && (
+			{!props.loading && (
+				<Text style={[styles.submitText, { ...props.styleText }]}>
+					{props.text}
+				</Text>
+			)}
+			{props.loading && (
+				<HStack space={2} alignItems="center">
+					<Spinner
+						accessibilityLabel="Loading posts"
+						color={colors.colorPrimary}
+						size="lg"
+					/>
+				</HStack>
+			)}
+			{props.iconVisible && !props.loading && (
 				<AntDesign name="checkcircle" size={30} color={colors.colorGreen} />
 			)}
 		</TouchableOpacity>
@@ -37,7 +49,7 @@ const styles = StyleSheet.create({
 	submitText: {
 		fontSize: 20,
 		color: colors.colorPrimary,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		marginRight: 10,
 	},
 });

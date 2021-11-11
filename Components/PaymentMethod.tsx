@@ -52,10 +52,11 @@ const styles = StyleSheet.create({
 	},
 	paymentType: {
 		color: colors.colorSecondary,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		fontSize: 16,
 	},
 	cardNumber: {
 		color: "grey",
+		fontFamily: "Montserrat-Regular",
 	},
 });

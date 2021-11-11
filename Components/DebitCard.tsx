@@ -82,7 +82,14 @@ const DebitCard = (props: Props) => {
 					/>
 				) : (
 					<View>
-						<Text style={{ color: colors.borderColor }}>Expiry</Text>
+						<Text
+							style={{
+								color: colors.borderColor,
+								fontFamily: "Montserrat-Regular",
+							}}
+						>
+							Expiry
+						</Text>
 						<Text style={styles.cardDetails}>{cardData.expiry}</Text>
 					</View>
 				)}
@@ -101,7 +108,14 @@ const DebitCard = (props: Props) => {
 					/>
 				) : (
 					<View>
-						<Text style={{ color: colors.borderColor }}>CVV</Text>
+						<Text
+							style={{
+								color: colors.borderColor,
+								fontFamily: "Montserrat-Regular",
+							}}
+						>
+							CVV
+						</Text>
 						<Text style={styles.cardDetails}>***</Text>
 					</View>
 				)}
@@ -119,7 +133,14 @@ const DebitCard = (props: Props) => {
 					/>
 				) : (
 					<View>
-						<Text style={{ color: colors.borderColor }}>Name</Text>
+						<Text
+							style={{
+								color: colors.borderColor,
+								fontFamily: "Montserrat-Regular",
+							}}
+						>
+							Name
+						</Text>
 						<Text style={styles.cardDetails}>{cardData.name}</Text>
 					</View>
 				)}
@@ -169,6 +190,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: 10,
 		marginVertical: 10,
 		borderWidth: 0.15,
+		fontFamily: "Montserrat-Regular",
 	},
 	expiryAndCvv: {
 		flex: 1,
@@ -177,6 +199,6 @@ const styles = StyleSheet.create({
 	},
 	cardDetails: {
 		color: colors.colorPrimary,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 	},
 });

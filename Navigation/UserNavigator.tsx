@@ -14,6 +14,7 @@ import ForgotPassword from "./../Screens/User/ForgotPassword";
 import { useSelector } from "react-redux";
 import colors from "../Constants/colors";
 import { Ionicons } from "@expo/vector-icons";
+import ProfileNavigation from "./ProfileNavigation";
 
 const { width, height } = Dimensions.get("window");
 
@@ -24,47 +25,36 @@ const UserNavigator = () => {
 
 	return (
 		<Stack.Navigator>
-			<Stack.Screen
-				name="Login"
-				component={Login}
-				options={{ headerShown: false }}
-			></Stack.Screen>
-			<Stack.Screen
-				name="Register"
-				component={Register}
-				options={{ headerShown: false }}
-			></Stack.Screen>
-			<Stack.Screen
-				name="UserProfile"
-				component={UserProfile}
-				options={({ navigation }) => ({
-					headerTitle: "",
-					headerStyle: {
-						backgroundColor: colors.colorPrimary,
-						elevation: 0,
-						shadowOpacity: 0,
-						borderBottomWidth: 0,
-						height: height / 10,
-					},
-					headerLeft: () => (
-						<TouchableOpacity
-							style={{ marginLeft: 10, marginTop: 10 }}
-							onPress={() => navigation.navigate("Home")}
-						>
-							<Ionicons
-								name="arrow-back"
-								size={24}
-								color={colors.colorSecondary}
-							/>
-						</TouchableOpacity>
-					),
-				})}
-			></Stack.Screen>
-			<Stack.Screen
-				name="ForgotPassword"
-				component={ForgotPassword}
-				options={{ headerShown: false }}
-			></Stack.Screen>
+			{!state.isAuthenticated && (
+				<Stack.Screen
+					name="Login"
+					component={Login}
+					options={{ headerShown: false }}
+				></Stack.Screen>
+			)}
+			{!state.isAuthenticated && (
+				<Stack.Screen
+					name="Register"
+					component={Register}
+					options={{ headerShown: false }}
+				></Stack.Screen>
+			)}
+			{!state.isAuthenticated && (
+				<Stack.Screen
+					name="ForgotPassword"
+					component={ForgotPassword}
+					options={{ headerShown: false }}
+				></Stack.Screen>
+			)}
+			{state.isAuthenticated && (
+				<Stack.Screen
+					name="ProfileNavigation"
+					component={ProfileNavigation}
+					options={({ navigation }) => ({
+						headerShown: false,
+					})}
+				></Stack.Screen>
+			)}
 		</Stack.Navigator>
 	);
 };

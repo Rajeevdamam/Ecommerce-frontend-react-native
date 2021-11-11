@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 	},
 	heading: {
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		fontSize: 16,
 		color: colors.shippingSummaryTextColor,
 	},
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		flex: 1,
 		fontSize: 14,
+		fontFamily: "Montserrat-Regular",
 	},
 	headingContainer: {
 		flexDirection: "row",

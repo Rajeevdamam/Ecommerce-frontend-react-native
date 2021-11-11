@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
 	},
 	categoryTitle: {
 		color: Colors.colorSecondary,
+		fontFamily: "Montserrat-Regular",
 	},
 	categoryActive: {
 		paddingHorizontal: 20,
@@ -96,5 +97,6 @@ const styles = StyleSheet.create({
 	},
 	categoryTitleActive: {
 		color: Colors.colorTeritiary,
+		fontFamily: "Montserrat-Regular",
 	},
 });

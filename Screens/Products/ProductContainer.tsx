@@ -217,12 +217,12 @@ const ProductContainer = (props: any) => {
 const styles = StyleSheet.create({
 	quote: {
 		color: Colors.colorSecondary,
-		fontWeight: "bold",
 		fontSize: 26,
 		padding: 0,
+		fontFamily: "Montserrat-Bold",
 	},
 	quoteContainer: {
-		width: width / 1.4,
+		width: width / 1.2,
 		margin: 10,
 		alignSelf: "flex-start",
 		alignItems: "flex-start",
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
 	categoryText: {
 		color: Colors.colorSecondary,
 		fontSize: 22,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		paddingHorizontal: 10,
 	},
 });

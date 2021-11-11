@@ -19,8 +19,9 @@ const CheckoutNavigation = () => {
 				options={{
 					headerTitleStyle: {
 						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
 					},
-					headerTitleAlign:"center",
+					headerTitleAlign: "center",
 					headerStyle: {
 						backgroundColor: colors.colorPrimary,
 						elevation: 0,
@@ -36,8 +37,9 @@ const CheckoutNavigation = () => {
 				options={{
 					headerTitleStyle: {
 						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
 					},
-					headerTitleAlign:"center",
+					headerTitleAlign: "center",
 					headerStyle: {
 						backgroundColor: colors.colorPrimary,
 						elevation: 0,
@@ -53,8 +55,9 @@ const CheckoutNavigation = () => {
 				options={{
 					headerTitleStyle: {
 						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
 					},
-					headerTitleAlign:"center",
+					headerTitleAlign: "center",
 					headerStyle: {
 						backgroundColor: colors.colorPrimary,
 						elevation: 0,

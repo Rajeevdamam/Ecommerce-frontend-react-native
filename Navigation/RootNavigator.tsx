@@ -32,7 +32,7 @@ const RootNavigator = () => {
 				name="Home"
 				component={ProductContainer}
 				options={{
-					headerTitleStyle: { height: 0, width: 0, opacity: 0 },
+					headerTitle: "",
 					headerLeft: () => (
 						<View
 							style={{
@@ -75,6 +75,10 @@ const RootNavigator = () => {
 						elevation: 0,
 						shadowOpacity: 0,
 						borderBottomWidth: 0,
+					},
+					headerTitleStyle: {
+						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
 					},
 					headerLeft: () => (
 						<TouchableOpacity

@@ -21,5 +21,6 @@ const styles = StyleSheet.create({
 	},
 	errorText: {
 		color: "red",
+		fontFamily: "Montserrat-Regular",
 	},
 });

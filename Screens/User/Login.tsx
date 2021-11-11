@@ -27,6 +27,7 @@ const Login = (props: any) => {
 	const [forgot, setForgot] = useState(true);
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	const dispatch = useDispatch();
 	const state = useSelector((state: any) => state.userReducer);
@@ -47,13 +48,13 @@ const Login = (props: any) => {
 		}
 	};
 
-	useFocusEffect(
-		useCallback(() => {
-			if (state.isAuthenticated === true) {
-				props.navigation.navigate("UserProfile");
-			}
-		}, [state.isAuthenticated])
-	);
+	// useFocusEffect(
+	// 	useCallback(() => {
+	// 		if (state.isAuthenticated === true) {
+	// 			props.navigation.navigate("ProfileNavigation");
+	// 		}
+	// 	}, [state.isAuthenticated])
+	// );
 
 	const onLogin = () => {
 		const user = {
@@ -64,7 +65,8 @@ const Login = (props: any) => {
 		if (email === "" || password === "") {
 			setError("Please fill in your credentials");
 		} else {
-			loginUser(dispatch, user);
+			setLoading(true);
+			loginUser(dispatch, user, setLoading, setEmail, setPassword);
 			setError("");
 		}
 	};
@@ -105,6 +107,8 @@ const Login = (props: any) => {
 					/>
 					{error.length > 0 && <ErrorComponent message={error} />}
 					<CustomButton
+						loading={loading}
+						iconVisible={false}
 						disabled={false}
 						styles={{
 							width: "100%",
@@ -126,7 +130,10 @@ const Login = (props: any) => {
 							onPress={() => props.navigation.navigate("Register")}
 						>
 							<Text
-								style={{ color: colors.colorSecondary, fontWeight: "bold" }}
+								style={{
+									color: colors.colorSecondary,
+									fontFamily: "Montserrat-Bold",
+								}}
 							>
 								Register.
 							</Text>
@@ -147,7 +154,7 @@ const styles = StyleSheet.create({
 	},
 	loginHeading: {
 		fontSize: 28,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		marginBottom: 10,
 		alignSelf: "center",
 		color: colors.colorSecondary,
@@ -163,6 +170,7 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		marginVertical: 20,
 		color: colors.navIconColor,
+		fontFamily: "Montserrat-Regular",
 	},
 	center: {
 		flexDirection: "row",

@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 		justifyContent: "space-around",
 	},
 	heading: {
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		fontSize: 16,
 		color: colors.paySummaryTextColor,
 	},
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
 		color: colors.paySummaryTextColor,
 		marginLeft: 10,
 		fontSize: 12,
+		fontFamily: "Montserrat-Regular",
 	},
 	headingContainer: {
 		flexDirection: "row",

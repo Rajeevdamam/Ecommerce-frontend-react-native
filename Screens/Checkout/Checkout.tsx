@@ -31,6 +31,8 @@ const Checkout = (props: any) => {
 	const [phone, setPhone] = useState<any>();
 	const [user, setUser] = useState<any>();
 
+	const [loading, setLoading] = useState(false);
+
 	const cartData = useSelector((state: any) => state.cartItems.cartData);
 
 	const shippingDetails = useSelector(
@@ -53,13 +55,16 @@ const Checkout = (props: any) => {
 	}, []);
 
 	const checkOut = () => {
+		setLoading(true);
 		if (!isObjEmpty(shippingDetails)) {
 			if (!isObjEmpty(paymentDetails)) {
 				setTimeout(() => {
+					setLoading(false);
 					props.navigation.navigate("Confirm");
 				}, 500);
 			} else {
 				setTimeout(() => {
+					setLoading(false);
 					props.navigation.navigate("Payment");
 				}, 500);
 			}
@@ -75,9 +80,11 @@ const Checkout = (props: any) => {
 			};
 			dispatch(addToShipping(shipping));
 			setTimeout(() => {
+				setLoading(false);
 				props.navigation.navigate("Payment");
 			}, 500);
 		} else {
+			setLoading(false);
 			toast.show({
 				title: "Please Fill all details",
 				placement: "bottom",
@@ -164,6 +171,8 @@ const Checkout = (props: any) => {
 						</View>
 
 						<CustomButton
+							loading={loading}
+							iconVisible={true}
 							disabled={false}
 							styles={styles.submit}
 							styleText={styles.submitText}
@@ -188,7 +197,7 @@ const styles = StyleSheet.create({
 
 	shippingHeading: {
 		color: colors.colorSecondary,
-		fontWeight: "bold",
+		fontFamily: "Montserrat-Bold",
 		fontSize: 20,
 		marginBottom: 10,
 		textAlign: "center",
