@@ -1,13 +1,13 @@
+import { Radio } from "native-base";
 import React, { useState } from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { useDispatch } from "react-redux";
+import paymentMethod from "../../assets/paymentMethods.json";
+import CustomButton from "../../Components/CustomButton";
 import PaymentMethod from "../../Components/PaymentMethod";
 import colors from "../../Constants/colors";
-import { Radio } from "native-base";
-import paymentMethod from "../../assets/paymentMethods.json";
 import DebitCard from "./../../Components/DebitCard";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import CustomButton from "../../Components/CustomButton";
-import { useDispatch, useSelector } from "react-redux";
 import { addToPayment } from "./../../Redux/Actions/paymentActions";
 import { isObjEmpty } from "./../../Utils/isObjectEmpty";
 

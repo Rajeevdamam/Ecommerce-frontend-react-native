@@ -1,24 +1,20 @@
-import { useToast } from "native-base";
 import React, { useEffect, useState } from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { useSelector } from "react-redux";
+import CartItemComponent from "../../Components/CartItemComponent";
 import CustomButton from "../../Components/CustomButton";
+import EditShipping from "../../Components/EditShipping";
+import OrderSummary from "../../Components/OrderSummary";
 import PaymentSummary from "../../Components/PaymentSummary";
 import ShippingSummary from "../../Components/ShippingSummary";
 import SvgOrderConfirm from "../../Components/SvgOrderConfirm";
 import colors from "../../Constants/colors";
-import { ScrollView } from "react-native-gesture-handler";
-import OrderSummary from "../../Components/OrderSummary";
-import CartItemComponent from "../../Components/CartItemComponent";
-import { useSelector } from "react-redux";
-import EditShipping from "../../Components/EditShipping";
-import { style } from "styled-system";
 
 let { width, height } = Dimensions.get("window");
 
 const Confirm = (props: any) => {
 	let cartItem = useSelector((state: any) => state.cartItems.cartData);
-
-	const toast = useToast();
 
 	const [loading, setLoading] = useState(false);
 
@@ -55,6 +51,7 @@ const Confirm = (props: any) => {
 		<View style={styles.screen}>
 			<View style={{ flex: 1, width: "100%" }}>
 				<ScrollView
+					keyboardShouldPersistTaps="always"
 					contentContainerStyle={{
 						alignItems: "center",
 						flexGrow: 1,

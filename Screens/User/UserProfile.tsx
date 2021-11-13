@@ -20,6 +20,7 @@ import baseURL from "./../../assets/common/baseurl";
 import { ScrollView } from "react-native-gesture-handler";
 import { useDisclose } from "native-base";
 import EditProfile from "./../../Components/EditProfile";
+import Loading from "../../Components/Loading";
 
 const { width, height } = Dimensions.get("window");
 
@@ -27,7 +28,7 @@ const UserProfile = (props: any) => {
 	const dispatch = useDispatch();
 	const state = useSelector((state: any) => state.userReducer);
 	const [user, setUser] = useState<any>({});
-
+	const [loading, setLoading] = useState(true);
 	const { isOpen, onOpen, onClose } = useDisclose();
 
 	useFocusEffect(
@@ -48,13 +49,16 @@ const UserProfile = (props: any) => {
 						})
 						.then((user: any) => {
 							setUser(user.data.data);
+							setLoading(false);
 						})
 						.catch((err: any) => {
 							console.log(err);
+							setLoading(false);
 						});
 				})
 				.catch((err: any) => {
 					console.log(err);
+					setLoading(false);
 				});
 
 			BackHandler.addEventListener("hardwareBackPress", onBackPress);
@@ -76,54 +80,62 @@ const UserProfile = (props: any) => {
 				{...user}
 			/>
 
-			<View style={styles.topContainer}>
-				<View style={styles.greetContainer}>
-					<Text style={styles.greetText}>Hey {user.name}!</Text>
-					<TouchableOpacity
-						onPress={onOpen}
-						style={{ flexDirection: "row", alignItems: "center" }}
-					>
-						<Text style={{ fontFamily: "Montserrat-Bold", fontSize: 15 }}>
-							EDIT
+			{loading ? (
+				<Loading />
+			) : (
+				<View style={styles.topContainer}>
+					<View style={styles.greetContainer}>
+						<Text style={styles.greetText}>Hey {user.name}!</Text>
+						<TouchableOpacity
+							onPress={onOpen}
+							style={{ flexDirection: "row", alignItems: "center" }}
+						>
+							<Text style={{ fontFamily: "Montserrat-Bold", fontSize: 15 }}>
+								EDIT
+							</Text>
+							<View style={{ marginLeft: 3 }}>
+								<AntDesign
+									name="edit"
+									size={16}
+									color={colors.colorSecondary}
+								/>
+							</View>
+						</TouchableOpacity>
+					</View>
+					<View style={styles.userPhoneAndEmail}>
+						<MaterialIcons
+							style={{ marginRight: 10 }}
+							name="alternate-email"
+							size={20}
+							color={colors.navIconColor}
+						/>
+						<Text
+							style={{
+								color: colors.navIconColor,
+								fontFamily: "Montserrat-Regular",
+							}}
+						>
+							{user.email}
 						</Text>
-						<View style={{ marginLeft: 3 }}>
-							<AntDesign name="edit" size={16} color={colors.colorSecondary} />
-						</View>
-					</TouchableOpacity>
+					</View>
+					<View style={styles.userPhoneAndEmail}>
+						<MaterialIcons
+							style={{ marginRight: 10 }}
+							name="call"
+							size={20}
+							color={colors.navIconColor}
+						/>
+						<Text
+							style={{
+								color: colors.navIconColor,
+								fontFamily: "Montserrat-Regular",
+							}}
+						>
+							+91 {user.phone}
+						</Text>
+					</View>
 				</View>
-				<View style={styles.userPhoneAndEmail}>
-					<MaterialIcons
-						style={{ marginRight: 10 }}
-						name="alternate-email"
-						size={20}
-						color={colors.navIconColor}
-					/>
-					<Text
-						style={{
-							color: colors.navIconColor,
-							fontFamily: "Montserrat-Regular",
-						}}
-					>
-						{user.email}
-					</Text>
-				</View>
-				<View style={styles.userPhoneAndEmail}>
-					<MaterialIcons
-						style={{ marginRight: 10 }}
-						name="call"
-						size={20}
-						color={colors.navIconColor}
-					/>
-					<Text
-						style={{
-							color: colors.navIconColor,
-							fontFamily: "Montserrat-Regular",
-						}}
-					>
-						+91 {user.phone}
-					</Text>
-				</View>
-			</View>
+			)}
 			<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
 				<View style={styles.userOptions}>
 					<UserDetailList

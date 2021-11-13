@@ -75,7 +75,10 @@ const Register = (props: any) => {
 
 	return (
 		<View style={styles.mainContainer}>
-			<KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
+			<KeyboardAwareScrollView
+				keyboardShouldPersistTaps="always"
+				contentContainerStyle={{ flexGrow: 1 }}
+			>
 				<SvgRegisterComponent width={width} height={height / 2.2} />
 				<TouchableOpacity
 					style={{

@@ -44,7 +44,7 @@ const EditShipping = (props: any) => {
 						<Text
 							style={{
 								fontSize: 16,
-								fontWeight: "bold",
+								fontFamily: "Montserrat-Bold",
 								color: colors.colorSecondary,
 							}}
 						>

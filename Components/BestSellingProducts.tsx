@@ -20,11 +20,11 @@ const BestSellingProducts = (props: any) => {
 				<View>
 					<Text>Top Five Products</Text>
 				</View>
-				<View style={styles.horizonal}>
-					<EvilIcons name="star" size={24} color={"orange"} />
+				<View style={styles.horizontal}>
+					<EvilIcons name="star" size={24} color={colors.navIconColor} />
 					<Text style={styles.rating}>{props.item.rating}</Text>
 				</View>
-				<View style={styles.horizonal}>
+				<View style={styles.horizontal}>
 					<Image
 						source={{
 							uri: "https://cdn-icons-png.flaticon.com/512/3580/3580149.png",
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 		width: width,
 	},
 	imageContainer: {
-		width: width / 2.4,
+		width: width / 2.2,
 		height: width / 3,
 		overflow: "hidden",
 	},
@@ -62,13 +62,13 @@ const styles = StyleSheet.create({
 		height: "100%",
 		resizeMode: "contain",
 	},
-	horizonal: {
+	horizontal: {
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
 	},
 	rating: {
-		color: "orange",
+		color: colors.navIconColor,
 		fontFamily: "Montserrat-Bold",
 	},
 	ratingAggregate: {

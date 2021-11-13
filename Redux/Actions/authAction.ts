@@ -30,11 +30,11 @@ export const loginUser = async (
 			await AsyncStorage.setItem("user", decode.userId);
 			let loggedInUser = await AsyncStorage.getItem("user");
 
-			Toast.show({
-				topOffset: 60,
-				type: "success",
-				text1: "Logged in Successfully",
-			});
+			// Toast.show({
+			// 	topOffset: 60,
+			// 	type: "success",
+			// 	text1: "Logged in Successfully",
+			// });
 			dispatch(setCurrentUser(!isObjEmpty(loggedInUser), loggedInUser, decode));
 			setLoading(false);
 			setEmail("");

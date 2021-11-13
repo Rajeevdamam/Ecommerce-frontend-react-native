@@ -1,24 +1,21 @@
-import React, { useState, useCallback } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/core";
+import React, { useCallback, useState } from "react";
 import {
+	Dimensions,
+	FlatList,
+	Keyboard,
 	StyleSheet,
 	Text,
 	View,
-	FlatList,
-	ActivityIndicator,
-	Dimensions,
-	Keyboard,
-	Image,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { useFocusEffect } from "@react-navigation/core";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { deleteProduct, getProducts } from "./ProductsOperations";
-import Search from "./../../Components/Search";
-import colors from "../../Constants/colors";
-import { Heading, HStack, Spinner } from "native-base";
-import ListItem from "./ListItem";
 import { DataTable } from "react-native-paper";
 import Toast from "react-native-toast-message";
+import Loading from "../../Components/Loading";
+import colors from "../../Constants/colors";
+import Search from "./../../Components/Search";
+import ListItem from "./ListItem";
+import { deleteProduct, getProducts } from "./ProductsOperations";
 
 const { width, height } = Dimensions.get("window");
 
@@ -131,24 +128,7 @@ const ProductsAccess = (props: any) => {
 				/>
 			</View>
 			{loading ? (
-				<View
-					style={{
-						flex: 1,
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
-					<HStack space={2} alignItems="center">
-						<Spinner
-							accessibilityLabel="Loading posts"
-							color={colors.colorSecondary}
-							size="lg"
-						/>
-						<Heading color={colors.colorSecondary} fontSize="lg">
-							Loading
-						</Heading>
-					</HStack>
-				</View>
+				<Loading />
 			) : (
 				<View style={{ flex: 1 }}>
 					{/* <FlatList

@@ -1,23 +1,15 @@
-import AntDesign from "@expo/vector-icons/build/AntDesign";
-import React, { useEffect, useRef, useState } from "react";
-import {
-	Dimensions,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
-	View,
-} from "react-native";
+import { Select, useToast } from "native-base";
+import React, { useEffect, useState } from "react";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { useDispatch, useSelector } from "react-redux";
+import countries from "../../assets/countries.json";
+import CustomButton from "../../Components/CustomButton";
 import InputText from "../../Components/InputText";
 import SvgShippingComponent from "../../Components/SvgShippingComponent";
 import colors from "../../Constants/colors";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { Select, useToast } from "native-base";
-import countries from "../../assets/countries.json";
-import { useDispatch, useSelector } from "react-redux";
-import cartItems from "./../../Redux/Reducers/cartItem";
-import CustomButton from "../../Components/CustomButton";
-import { addToShipping } from "./../../Redux/Actions/ShippingActions";
 import { isObjEmpty } from "../../Utils/isObjectEmpty";
+import { addToShipping } from "./../../Redux/Actions/ShippingActions";
 
 let { width, height } = Dimensions.get("window");
 

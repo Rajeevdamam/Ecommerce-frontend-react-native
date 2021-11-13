@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
+import React, { useState } from "react";
 import {
 	Dimensions,
 	StyleSheet,
@@ -6,19 +7,15 @@ import {
 	TouchableOpacity,
 	View,
 } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { useDispatch, useSelector } from "react-redux";
 import CustomButton from "../../Components/CustomButton";
+import ErrorComponent from "../../Components/Error";
 import InputText from "../../Components/InputText";
 import SocialLoginButton from "../../Components/SocialLoginButton";
 import colors from "../../Constants/colors";
-import SvgLoginComponent from "./../../Components/SvgLoginComponent";
-import { Ionicons } from "@expo/vector-icons";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import Toast from "react-native-toast-message";
-import ErrorComponent from "../../Components/Error";
-import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../Redux/Actions/authAction";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect } from "@react-navigation/core";
+import SvgLoginComponent from "./../../Components/SvgLoginComponent";
 
 let { height, width } = Dimensions.get("window");
 
@@ -73,7 +70,10 @@ const Login = (props: any) => {
 
 	return (
 		<View style={styles.mainContainer}>
-			<KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
+			<KeyboardAwareScrollView
+				keyboardShouldPersistTaps="always"
+				contentContainerStyle={{ flexGrow: 1 }}
+			>
 				<SvgLoginComponent width={width} height={height / 2.2} />
 				<TouchableOpacity
 					style={{

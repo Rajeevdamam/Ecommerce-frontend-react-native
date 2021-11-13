@@ -1,18 +1,16 @@
+import FontAwesome from "@expo/vector-icons/build/FontAwesome";
+import { useFocusEffect } from "@react-navigation/core";
 import React, { useCallback, useState } from "react";
-import { StyleSheet, Text, View, Dimensions, Keyboard } from "react-native";
-
+import { Dimensions, Keyboard, StyleSheet, Text, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import Banner from "../../Components/Banner";
+import CategoryList from "../../Components/CategoryList";
+import Loading from "../../Components/Loading";
+import Search from "../../Components/Search";
+import SearchList from "../../Components/SearchList";
+import Colors from "../../Constants/colors";
 import ProductList from "./ProductList";
 import { getProductCategories, getProducts } from "./Products";
-import Colors from "../../Constants/colors";
-import Search from "../../Components/Search";
-import FontAwesome from "@expo/vector-icons/build/FontAwesome";
-import CategoryList from "../../Components/CategoryList";
-import SearchList from "../../Components/SearchList";
-import Banner from "../../Components/Banner";
-import { ScrollView } from "react-native-gesture-handler";
-import { useFocusEffect } from "@react-navigation/core";
-import colors from "../../Constants/colors";
-import { Heading, HStack, Spinner } from "native-base";
 
 let { width } = Dimensions.get("window");
 
@@ -65,7 +63,7 @@ const ProductContainer = (props: any) => {
 	useFocusEffect(
 		useCallback(() => {
 			setFocused(false);
-
+			setLoading(true);
 			getProducts()
 				.then((res: any) => {
 					setProducts(res.data.data);
@@ -75,14 +73,17 @@ const ProductContainer = (props: any) => {
 				})
 				.catch((err: any) => {
 					console.log(err.message);
+					setLoading(false);
 				});
 
 			getProductCategories()
 				.then((res: any) => {
 					setCategories(res.data.data);
+					setLoading(false);
 				})
 				.catch((err: any) => {
 					console.log(err.message);
+					setLoading(false);
 				});
 
 			setActive(0);
@@ -142,26 +143,12 @@ const ProductContainer = (props: any) => {
 			) : (
 				<>
 					{loading ? (
-						<View
-							style={{
-								flex: 1,
-								justifyContent: "center",
-								alignItems: "center",
-							}}
-						>
-							<HStack space={2} alignItems="center">
-								<Spinner
-									accessibilityLabel="Loading posts"
-									color={colors.colorSecondary}
-									size="lg"
-								/>
-								<Heading color={colors.colorSecondary} fontSize="lg">
-									Loading
-								</Heading>
-							</HStack>
-						</View>
+						<Loading />
 					) : (
-						<ScrollView>
+						<ScrollView
+							keyboardShouldPersistTaps="always"
+							keyboardDismissMode="on-drag"
+						>
 							<View>
 								<Banner />
 							</View>
@@ -200,7 +187,12 @@ const ProductContainer = (props: any) => {
 							) : (
 								<View>
 									<Text
-										style={{ fontSize: 16, textAlign: "center", color: "grey" }}
+										style={{
+											fontFamily: "Montserrat-Regular",
+											fontSize: 16,
+											textAlign: "center",
+											color: "grey",
+										}}
 									>
 										No Products found
 									</Text>

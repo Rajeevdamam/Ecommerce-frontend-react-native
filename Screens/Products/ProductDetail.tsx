@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
+	Dimensions,
+	Image,
+	ScrollView,
 	StyleSheet,
 	Text,
-	View,
-	ScrollView,
-	Image,
-	Dimensions,
 	TouchableOpacity,
+	View,
 } from "react-native";
 import { Rating } from "react-native-elements";
 import Swiper from "react-native-swiper";
-import colors from "../../Constants/colors";
 import Icon from "react-native-vector-icons/AntDesign";
 import { useDispatch } from "react-redux";
+import colors from "../../Constants/colors";
 import { addToCart } from "./../../Redux/Actions/cartActions";
-import { useRoute } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
 
@@ -80,6 +79,7 @@ const ProductDetail = (props: any) => {
 							<Text style={styles.rate}>{item.rating}</Text>
 							<View>
 								<Rating
+									readonly={true}
 									type="star"
 									startingValue={item.rating}
 									ratingCount={5}
