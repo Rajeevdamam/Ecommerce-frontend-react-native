@@ -8,7 +8,6 @@ const CategoryList = (props: any) => {
 
 	return (
 		<FlatList
-			key={"_"}
 			horizontal
 			bounces
 			showsHorizontalScrollIndicator={false}
@@ -59,7 +58,7 @@ const CategoryList = (props: any) => {
 					</Text>
 				</TouchableOpacity>
 			)}
-			keyExtractor={(item: any) => "_" + item.name}
+			keyExtractor={(item: any) => item._id}
 		/>
 	);
 };
