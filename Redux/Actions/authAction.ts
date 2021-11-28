@@ -6,6 +6,7 @@ import axios from "axios";
 import { isObjEmpty } from "./../../Utils/isObjectEmpty";
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const SET_USER_DATA = "SET_USER_DATA";
 
 export const loginUser = async (
 	dispatch: any,
@@ -30,12 +31,16 @@ export const loginUser = async (
 			await AsyncStorage.setItem("user", decode.userId);
 			let loggedInUser = await AsyncStorage.getItem("user");
 
+			const userProfile: any = await getUserProfile(loggedInUser);
+			dispatch(setUserDetails(userProfile.data.data));
+
 			// Toast.show({
 			// 	topOffset: 60,
 			// 	type: "success",
 			// 	text1: "Logged in Successfully",
 			// });
 			dispatch(setCurrentUser(!isObjEmpty(loggedInUser), loggedInUser, decode));
+
 			setLoading(false);
 			setEmail("");
 			setPassword("");
@@ -51,27 +56,68 @@ export const loginUser = async (
 			text2: "Please Try Again",
 		});
 		setLoading(false);
+		console.log(error.response.data);
 
 		logoutUser(dispatch);
 	}
 };
 
-export const getUserProfile = async (id: any) => {
-	try {
-		const user = await axios.get(`${baseURL}user/${id}`);
-		console.log(user);
-	} catch (err) {
-		Toast.show({
-			topOffset: 60,
-			type: "error",
-			text1: "Please provide correct credentials",
-		});
-	}
+export const getUserProfile = (id: any) => {
+	return axios.get(`${baseURL}user/get?id=${id}`);
 };
 
 export const logoutUser = async (dispatch: any) => {
 	await AsyncStorage.removeItem("JWTtoken");
 	dispatch(setCurrentUser(false, "", {}));
+	dispatch(setUserDetails({}));
+};
+
+export const socialLogin = async (
+	dispatch: any,
+	data: any,
+	setLoading: any
+) => {
+	try {
+		let user: any = await axios.post(
+			`${baseURL}user/social/login`,
+			JSON.stringify({ ...data }),
+			{
+				headers: { "Content-Type": "application/json" },
+			}
+		);
+
+		if (user) {
+			const token = user.data.token;
+			await AsyncStorage.setItem("JWTtoken", token);
+			const decode: any = jwt_decode(token);
+			await AsyncStorage.setItem("user", decode.userId);
+			let loggedInUser = await AsyncStorage.getItem("user");
+
+			const userProfile: any = await getUserProfile(loggedInUser);
+			dispatch(setUserDetails(userProfile.data.data));
+
+			// Toast.show({
+			// 	topOffset: 60,
+			// 	type: "success",
+			// 	text1: "Logged in Successfully",
+			// });
+			dispatch(setCurrentUser(!isObjEmpty(loggedInUser), loggedInUser, decode));
+
+			setLoading(false);
+		} else {
+			logoutUser(dispatch);
+			setLoading(false);
+		}
+	} catch (error: any) {
+		Toast.show({
+			topOffset: 60,
+			type: "error",
+			text1: "Login Unsuccessfull",
+			text2: "Please Try Again",
+		});
+		setLoading(false);
+		logoutUser(dispatch);
+	}
 };
 
 export const setCurrentUser = (
@@ -84,5 +130,12 @@ export const setCurrentUser = (
 		isEmpty: isAuthenticated,
 		payload: user,
 		decode: decoded,
+	};
+};
+
+export const setUserDetails = (payload: any) => {
+	return {
+		type: SET_USER_DATA,
+		payload: payload,
 	};
 };

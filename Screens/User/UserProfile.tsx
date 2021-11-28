@@ -1,6 +1,6 @@
 import MaterialIcons from "@expo/vector-icons/build/MaterialIcons";
 import { useFocusEffect } from "@react-navigation/native";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
 	BackHandler,
 	Dimensions,
@@ -12,7 +12,7 @@ import {
 import UserDetailList from "../../Components/UserDetailList";
 import colors from "../../Constants/colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import { logoutUser } from "../../Redux/Actions/authAction";
+import { logoutUser, setUserDetails } from "../../Redux/Actions/authAction";
 import { useDispatch, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
@@ -27,28 +27,36 @@ const { width, height } = Dimensions.get("window");
 const UserProfile = (props: any) => {
 	const dispatch = useDispatch();
 	const state = useSelector((state: any) => state.userReducer);
-	const [user, setUser] = useState<any>({});
-	const [loading, setLoading] = useState(true);
+	const { name, email, phone, _id } = state.userDetails;
+	const [loading, setLoading] = useState(false);
 	const { isOpen, onOpen, onClose } = useDisclose();
+	const [updated, setUpdated] = useState(false);
+	const [userName, setuserName] = useState(name || "");
 
-	useFocusEffect(
-		useCallback(() => {
-			// if (state.isAuthenticated === false) {
-			// 	props.navigation.navigate("Login");
-			// }
-			const onBackPress = () => {
-				props.navigation.navigate("Home");
-				return true;
-			};
+	const handleUpdate = () => {
+		setUpdated(true);
+	};
 
+	useEffect(() => {
+		// if (state.isAuthenticated === false) {
+		// 	props.navigation.navigate("Login");
+		// }
+		const onBackPress = () => {
+			props.navigation.navigate("Home");
+			return true;
+		};
+		if (updated) {
+			setLoading(true);
 			AsyncStorage.getItem("JWTtoken")
 				.then((res: any) => {
 					axios
-						.get(`${baseURL}user/get/${state.loggedInUser}`, {
+						.get(`${baseURL}user/get?id=${state.loggedInUser}`, {
 							headers: { Authorization: `Bearer ${res}` },
 						})
 						.then((user: any) => {
-							setUser(user.data.data);
+							setUpdated(false);
+							setuserName(user.data.data.name);
+							dispatch(setUserDetails(user.data.data));
 							setLoading(false);
 						})
 						.catch((err: any) => {
@@ -60,12 +68,16 @@ const UserProfile = (props: any) => {
 					console.log(err);
 					setLoading(false);
 				});
+		}
 
-			BackHandler.addEventListener("hardwareBackPress", onBackPress);
-			return () =>
-				BackHandler.removeEventListener("hardwareBackPress", onBackPress);
-		}, [state.isAuthenticated, isOpen])
-	);
+		BackHandler.addEventListener("hardwareBackPress", onBackPress);
+		return () => {
+			BackHandler.removeEventListener("hardwareBackPress", onBackPress);
+			setLoading(false);
+			setUpdated(false);
+			setuserName("");
+		};
+	}, [updated]);
 
 	const handleLogout = () => {
 		logoutUser(dispatch);
@@ -77,7 +89,8 @@ const UserProfile = (props: any) => {
 				onOpen={onOpen}
 				isOpen={isOpen}
 				onClose={onClose}
-				{...user}
+				handleUpdate={handleUpdate}
+				{...state.userDetails}
 			/>
 
 			{loading ? (
@@ -85,7 +98,7 @@ const UserProfile = (props: any) => {
 			) : (
 				<View style={styles.topContainer}>
 					<View style={styles.greetContainer}>
-						<Text style={styles.greetText}>Hey {user.name}!</Text>
+						<Text style={styles.greetText}>Hey {userName.split(" ")[0]}!</Text>
 						<TouchableOpacity
 							onPress={onOpen}
 							style={{ flexDirection: "row", alignItems: "center" }}
@@ -115,7 +128,7 @@ const UserProfile = (props: any) => {
 								fontFamily: "Montserrat-Regular",
 							}}
 						>
-							{user.email}
+							{email}
 						</Text>
 					</View>
 					<View style={styles.userPhoneAndEmail}>
@@ -131,7 +144,7 @@ const UserProfile = (props: any) => {
 								fontFamily: "Montserrat-Regular",
 							}}
 						>
-							+91 {user.phone}
+							+91 {phone}
 						</Text>
 					</View>
 				</View>
@@ -143,36 +156,42 @@ const UserProfile = (props: any) => {
 						title="Recent Orders"
 						navigation={props.navigation}
 						screen="RecentOrders"
+						params={_id}
 					/>
 					<UserDetailList
 						image={"https://cdn-icons-png.flaticon.com/512/3649/3649210.png"}
 						title="My Payment Cards"
 						navigation={props.navigation}
 						screen="PaymentCards"
+						params={_id}
 					/>
 					<UserDetailList
 						image={"https://cdn-icons-png.flaticon.com/512/5955/5955557.png"}
 						title="Shipping Options"
 						navigation={props.navigation}
 						screen="ShippingOptions"
+						params={_id}
 					/>
 					<UserDetailList
 						image={"https://cdn-icons-png.flaticon.com/512/682/682018.png"}
 						title="Support"
 						navigation={props.navigation}
 						screen="Support"
+						params={_id}
 					/>
 					<UserDetailList
 						image={"https://cdn-icons-png.flaticon.com/512/3104/3104966.png"}
 						title="My Offers"
 						navigation={props.navigation}
-						screen="RecentOrders"
+						screen="MyOffers"
+						params={_id}
 					/>
 					<UserDetailList
 						image={"https://cdn-icons-png.flaticon.com/128/167/167801.png"}
 						title="About"
 						navigation={props.navigation}
 						screen="AboutPage"
+						params={_id}
 					/>
 				</View>
 				<View style={styles.footer}>

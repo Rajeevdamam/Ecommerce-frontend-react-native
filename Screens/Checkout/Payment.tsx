@@ -14,7 +14,9 @@ import { isObjEmpty } from "./../../Utils/isObjectEmpty";
 const Payment = (props: any) => {
 	const [value, setValue] = useState<any>();
 
-	let paymentMethods: any = paymentMethod;
+	const paymentMethodMap: any = paymentMethod;
+
+	let paymentMethods: any = paymentMethodMap;
 
 	const dispatch = useDispatch();
 
@@ -90,7 +92,7 @@ const Payment = (props: any) => {
 		if (!isObjEmpty(cardData)) {
 			dispatch(addToPayment(cardData));
 		} else {
-			dispatch(addToPayment(paymentMethod[value]));
+			dispatch(addToPayment(paymentMethodMap[value]));
 		}
 		setTimeout(() => {
 			setLoading(false);
@@ -133,7 +135,7 @@ const Payment = (props: any) => {
 									paymentType={item.name}
 									cardDetail={item.cardDetail}
 								>
-									<Radio my={5} value={item.value}>
+									<Radio my={5} value={item.value || ""}>
 										{" "}
 									</Radio>
 								</PaymentMethod>

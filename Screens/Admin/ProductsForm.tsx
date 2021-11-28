@@ -47,6 +47,15 @@ const ProductsForm = (props: any) => {
 	useEffect(() => {
 		if (!props.route.params) {
 			setItem(null);
+			setTitle("");
+			setBrand("");
+			setPrice("");
+			setDescription("");
+			setImage("");
+			setMainImage("");
+			setCategory("");
+			setIsFeatured("");
+			setInStock("");
 		} else {
 			setItem(props.route.params.item);
 			setTitle(props.route.params.item.title);
@@ -135,10 +144,6 @@ const ProductsForm = (props: any) => {
 
 		// const newImageUri = "file:///" + image.split("file:/").join("");
 
-		// console.log("====================================");
-		// console.log(newImageUri);
-		// console.log("====================================");
-
 		formData.append("image", {
 			uri: image,
 			type: mime.getType(image),
@@ -154,8 +159,6 @@ const ProductsForm = (props: any) => {
 		formData.append("rating", rating);
 		formData.append("isFeatured", isFeatured);
 		formData.append("numReviews", numReviews);
-
-		console.log(formData);
 
 		const config = {
 			headers: {
@@ -212,8 +215,6 @@ const ProductsForm = (props: any) => {
 				});
 		}
 	};
-
-	console.log(option);
 
 	return (
 		<View style={styles.mainContainer}>

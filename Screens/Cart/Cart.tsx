@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {
-	Dimensions,
-	ScrollView,
-	StyleSheet,
-	View,
-	Text,
-	TouchableOpacity,
-	Image,
-} from "react-native";
+import { Dimensions, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
+import CustomButton from "../../Components/CustomButton";
+import SvgEmptyCartComponent from "../../Components/SvgEmptyCartComponent";
 import colors from "../../Constants/colors";
 import CartItemComponent from "./../../Components/CartItemComponent";
-import AntDesign from "@expo/vector-icons/build/AntDesign";
-import { useSelector } from "react-redux";
-import SvgEmptyCartComponent from "../../Components/SvgEmptyCartComponent";
-import CustomButton from "../../Components/CustomButton";
 import { isObjEmpty } from "./../../Utils/isObjectEmpty";
 
 let { width, height } = Dimensions.get("window");
@@ -37,23 +28,29 @@ const Cart = (props: any) => {
 		(state: any) => state.paymentDetails.paymentData
 	);
 
+	const user = useSelector((state: any) => state.userReducer);
+
 	const moveToCheckout = () => {
-		setLoading(true);
-		if (!isObjEmpty(shippingDetails)) {
-			if (!isObjEmpty(paymentDetails)) {
-				setTimeout(() => {
-					setLoading(false);
-					props.navigation.navigate("Checkout", { screen: "Confirm" });
-				}, 500);
-			} else {
-				setTimeout(() => {
-					setLoading(false);
-					props.navigation.navigate("Checkout", { screen: "Payment" });
-				}, 500);
-			}
+		if (!user.isAuthenticated) {
+			props.navigation.navigate("User", { screen: "Login" });
 		} else {
-			setLoading(false);
-			props.navigation.navigate("Checkout");
+			setLoading(true);
+			if (!isObjEmpty(shippingDetails)) {
+				if (!isObjEmpty(paymentDetails)) {
+					setTimeout(() => {
+						setLoading(false);
+						props.navigation.navigate("Checkout", { screen: "Confirm" });
+					}, 500);
+				} else {
+					setTimeout(() => {
+						setLoading(false);
+						props.navigation.navigate("Checkout", { screen: "Payment" });
+					}, 500);
+				}
+			} else {
+				setLoading(false);
+				props.navigation.navigate("Checkout");
+			}
 		}
 	};
 
@@ -99,12 +96,14 @@ const Cart = (props: any) => {
 
 				<CustomButton
 					loading={loading}
-					iconVisible={true}
+					iconVisible={user.isAuthenticated}
 					disabled={items.length === 0}
 					styles={styles.checkout}
 					styleText={styles.checkoutText}
 					onPress={moveToCheckout}
-					text="Checkout"
+					text={
+						!user.isAuthenticated && items.length > 0 ? "Login" : "Checkout"
+					}
 				/>
 			</View>
 		</View>

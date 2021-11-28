@@ -18,7 +18,7 @@ export const editCategory = async (id: any, data: any) => {
 	return axios.put(`${baseURL}category/${id}`, data, config);
 };
 
-export const addCategory = async (id: any, data: any) => {
+export const addCategory = async (data: any) => {
 	const token = await AsyncStorage.getItem("JWTtoken");
 
 	const config = {
@@ -28,4 +28,16 @@ export const addCategory = async (id: any, data: any) => {
 		},
 	};
 	return axios.post(`${baseURL}category`, data, config);
+};
+
+export const deleteCategory = async (id: any) => {
+	const token = await AsyncStorage.getItem("JWTtoken");
+
+	const config = {
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+	};
+	return axios.delete(`${baseURL}category/${id}`, config);
 };

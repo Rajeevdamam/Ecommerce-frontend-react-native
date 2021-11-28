@@ -35,11 +35,13 @@ const EditProfile = (props: any) => {
 		updateUser(props._id, user)
 			.then((res: any) => {
 				props.onClose();
+				props.handleUpdate();
 				setLoading(false);
 			})
 			.catch((err: any) => {
 				console.log(err.message);
 				setLoading(false);
+				props.handleUpdate();
 			});
 	};
 

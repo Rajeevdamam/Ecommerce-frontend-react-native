@@ -40,7 +40,7 @@ const CategoriesAccess = (props: any) => {
 	};
 
 	const handleUpdate = (value: boolean) => {
-		setUpdated(true);
+		setUpdated(value);
 	};
 
 	const onModalOpen = (value: boolean, data: any) => {
@@ -67,6 +67,7 @@ const CategoriesAccess = (props: any) => {
 								{...item}
 								onModalOpen={onModalOpen}
 								onModalClose={onModalClose}
+								handleUpdate={handleUpdate}
 							/>
 						)}
 						keyExtractor={(item: any) => item._id}

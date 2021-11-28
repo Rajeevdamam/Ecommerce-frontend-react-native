@@ -1,7 +1,6 @@
-import { Actionsheet, FormControl, Input, Modal } from "native-base";
+import { FormControl, Input, Modal } from "native-base";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import { Image, StyleSheet, Text, View } from "react-native";
 import colors from "../Constants/colors";
 import {
 	addCategory,
@@ -20,6 +19,7 @@ const EditCategory = (props: any) => {
 		setIcon(props.icon);
 		setImage(props.image);
 		setLoading(false);
+
 		return () => {
 			setCategory("");
 			setIcon("");
@@ -36,7 +36,7 @@ const EditCategory = (props: any) => {
 			image,
 		};
 
-		if (category !== "") {
+		if (id !== "") {
 			editCategory(id, data)
 				.then((res: any) => {
 					setLoading(false);
@@ -47,18 +47,20 @@ const EditCategory = (props: any) => {
 					console.log(err.data.message);
 					setLoading(false);
 					props.onModalClose();
+					props.handleUpdate(true);
 				});
 		} else {
-			addCategory(id, data)
+			addCategory(data)
 				.then((res: any) => {
 					setLoading(false);
-					console.log(res.data.data);
 					props.onModalClose();
+					props.handleUpdate(true);
 				})
 				.catch((err: any) => {
-					console.log(err.message);
+					console.log(err);
 					setLoading(false);
 					props.onModalClose();
+					props.handleUpdate(true);
 				});
 		}
 	};
@@ -121,14 +123,46 @@ const EditCategory = (props: any) => {
 							>
 								Category Image
 							</FormControl.Label>
-							<Input
-								fontFamily="Montserrat-Regular"
-								placeholder="Category Image"
-								value={image}
-								onChangeText={(text: any) => {
-									setImage(text);
+							<View
+								style={{
+									flexDirection: "row",
+									justifyContent: "space-between",
+									alignItems: "center",
 								}}
-							/>
+							>
+								{image != null && (
+									<View
+										style={{
+											borderRadius: 5,
+											width: 60,
+											height: 60,
+											borderWidth: 0.5,
+											borderColor: colors.colorSecondary,
+											marginRight: 20,
+										}}
+									>
+										<Image
+											source={{ uri: image }}
+											resizeMode="contain"
+											style={{
+												borderRadius: 5,
+												width: "100%",
+												height: "100%",
+											}}
+										/>
+									</View>
+								)}
+
+								<Input
+									fontFamily="Montserrat-Regular"
+									placeholder="Category Image"
+									value={image}
+									style={{ flex: 1 }}
+									onChangeText={(text: any) => {
+										setImage(text);
+									}}
+								/>
+							</View>
 						</FormControl>
 					</Modal.Body>
 					<Modal.Footer>
@@ -137,7 +171,7 @@ const EditCategory = (props: any) => {
 							iconVisible={true}
 							disabled={false}
 							styles={{ width: "100%", borderRadius: 5, padding: 10 }}
-							onPress={() => addOrEditCategory(props._id)}
+							onPress={() => addOrEditCategory(props._id || "")}
 							text="Save"
 						/>
 					</Modal.Footer>

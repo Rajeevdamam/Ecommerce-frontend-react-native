@@ -5,10 +5,9 @@ import Navigation from "./Navigation/Navigation";
 import Colors from "./Constants/colors";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
-import { NativeBaseProvider } from "native-base";
+import { extendTheme, NativeBaseProvider } from "native-base";
 import Toast from "react-native-toast-message";
 import * as Font from "expo-font";
-import { theme } from "./usefonts/fonts";
 import AppLoading from "expo-app-loading";
 import { Provider as PaperProvider } from "react-native-paper";
 import { enableScreens } from "react-native-screens";
@@ -27,6 +26,17 @@ LogBox.ignoreLogs([
 	"source.uri should not be an empty string",
 ]);
 
+const theme = extendTheme({
+	components: {
+		FAB: {
+			baseStyle: {},
+			defaultProps: {},
+			variants: {},
+			sizes: {},
+		},
+	},
+});
+
 export default function App() {
 	const [fontLoaded, setFontLoaded] = useState(false);
 	if (!fontLoaded) {
@@ -40,7 +50,7 @@ export default function App() {
 	} else {
 		return (
 			<Provider store={store}>
-				<NativeBaseProvider>
+				<NativeBaseProvider theme={theme}>
 					<PaperProvider>
 						<View style={styles.container}>
 							<Navigation />

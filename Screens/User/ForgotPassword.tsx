@@ -11,12 +11,43 @@ import SvgForgotPasswordComponent from "./../../Components/SvgForgotPassword";
 import { Ionicons } from "@expo/vector-icons";
 import InputText from "../../Components/InputText";
 import CustomButton from "../../Components/CustomButton";
+import axios from "axios";
+import baseURL from "./../../assets/common/baseurl";
+import Toast from "react-native-toast-message";
 
 let { height, width } = Dimensions.get("window");
 
 const ForgotPassword = (props: any) => {
 	const [email, setEmail] = useState("");
 	const [loading, setLoading] = useState(false);
+
+	const submit = () => {
+		setLoading(true);
+		axios
+			.post(`${baseURL}user/get/otp`, JSON.stringify({ email }), {
+				headers: { "Content-Type": "application/json" },
+			})
+			.then((res: any) => {
+				Toast.show({
+					topOffset: 60,
+					type: "success",
+					text1: "OTP has been sent to your email",
+				});
+				setTimeout(() => {
+					setLoading(false);
+					props.navigation.navigate("OTPScreen", { email: email });
+				}, 500);
+			})
+			.catch((err: any) => {
+				setLoading(false);
+				Toast.show({
+					topOffset: 60,
+					type: "error",
+					text1: "Something went wrong",
+					text2: "Please Try Again",
+				});
+			});
+	};
 
 	return (
 		<View style={styles.mainContainer}>
@@ -49,7 +80,7 @@ const ForgotPassword = (props: any) => {
 						marginTop: 20,
 					}}
 					styleText={{}}
-					onPress={() => {}}
+					onPress={submit}
 					text="Submit"
 				/>
 			</View>

@@ -9,6 +9,7 @@ import colors from "../Constants/colors";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Dashboard from "../Screens/Admin/Dashboard";
+import OrderNavigation from "./OrderNavigation";
 
 const Drawer = createDrawerNavigator();
 // const Stack = createStackNavigator();
@@ -106,10 +107,9 @@ const AdminNavigator = () => {
 				})}
 			/>
 			<Drawer.Screen
-				name="Orders"
-				component={OrdersAccess}
+				name="Order Access"
+				component={OrderNavigation}
 				options={({ navigation }) => ({
-					title: "Orders",
 					headerTitleStyle: {
 						color: colors.colorSecondary,
 						fontFamily: "Montserrat-Bold",

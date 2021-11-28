@@ -1,3 +1,4 @@
+import { HStack, Spinner } from "native-base";
 import React from "react";
 import {
 	StyleSheet,
@@ -11,14 +12,30 @@ import colors from "../Constants/colors";
 
 let { width, height } = Dimensions.get("window");
 
-interface Props {
-	image: string;
-}
-
-const SocialLoginButton = ({ image }: Props) => {
+const SocialLoginButton = ({
+	image,
+	googleLogin,
+	type,
+	facebookLogIn,
+	loading,
+}: any) => {
 	return (
-		<TouchableOpacity activeOpacity={0.5} style={styles.imageContainer}>
-			<Image source={{ uri: image }} style={styles.image} />
+		<TouchableOpacity
+			activeOpacity={0.5}
+			style={styles.imageContainer}
+			onPress={() => (type == "google" ? googleLogin() : facebookLogIn())}
+		>
+			{loading ? (
+				<HStack space={2} alignItems="center">
+					<Spinner
+						accessibilityLabel="Loading posts"
+						color={type === "google" ? "warning.500" : "blue.500"}
+						size="lg"
+					/>
+				</HStack>
+			) : (
+				<Image source={{ uri: image }} style={styles.image} />
+			)}
 		</TouchableOpacity>
 	);
 };
@@ -32,6 +49,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.colorTeritiary,
 		padding: 10,
 		borderRadius: 10,
+		alignItems: "center",
 	},
 	image: {
 		width: "100%",

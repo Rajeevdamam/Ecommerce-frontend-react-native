@@ -11,6 +11,7 @@ import {
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Icon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../Constants/colors";
+import { deleteCategory } from "./CategoriesOperations";
 
 const { width, height } = Dimensions.get("window");
 
@@ -19,6 +20,17 @@ const CategoryCard = (props: any) => {
 
 	const onModalOpen = (data: any) => {
 		props.onModalOpen(true, data);
+	};
+
+	const handleDelete = (id: any) => {
+		deleteCategory(id)
+			.then((res) => {
+				props.handleUpdate(true);
+			})
+			.catch((err: any) => {
+				console.log(err);
+				props.handleUpdate(true);
+			});
 	};
 
 	return (
@@ -117,7 +129,11 @@ const CategoryCard = (props: any) => {
 							</Text>
 						</View>
 					</Menu.Item>
-					<Menu.Item onPress={() => {}}>
+					<Menu.Item
+						onPress={() => {
+							handleDelete(props._id);
+						}}
+					>
 						<View style={{ flexDirection: "row", alignItems: "center" }}>
 							<FontAwesome name="remove" size={24} color={"red"} />
 							<Text

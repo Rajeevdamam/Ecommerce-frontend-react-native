@@ -15,6 +15,8 @@ import { useSelector } from "react-redux";
 import colors from "../Constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import ProfileNavigation from "./ProfileNavigation";
+import OTPScreen from "./../Screens/User/OTPScreen";
+import ChangePasswordScreen from "../Screens/User/ChangePasswordScreen";
 
 const { width, height } = Dimensions.get("window");
 
@@ -55,6 +57,21 @@ const UserNavigator = () => {
 					})}
 				></Stack.Screen>
 			)}
+			<Stack.Screen
+				name="OTPScreen"
+				component={OTPScreen}
+				options={({ navigation }) => ({
+					headerShown: false,
+				})}
+			></Stack.Screen>
+
+			<Stack.Screen
+				name="ChangePassword"
+				component={ChangePasswordScreen}
+				options={({ navigation }) => ({
+					headerShown: false,
+				})}
+			></Stack.Screen>
 		</Stack.Navigator>
 	);
 };

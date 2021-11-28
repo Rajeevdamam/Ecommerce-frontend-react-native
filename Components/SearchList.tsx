@@ -16,7 +16,6 @@ const SearchList = (props: any) => {
 						paddingBottom: 10,
 					}}
 					data={data}
-					key={"#"}
 					style={{ backgroundColor: Colors.colorPrimary }}
 					renderItem={({ item }: any) => (
 						<SearchedComponent
@@ -25,7 +24,7 @@ const SearchList = (props: any) => {
 							navigation={props.navigation}
 						/>
 					)}
-					keyExtractor={(item: any) => "#" + item.id}
+					keyExtractor={(item: any) => item._id}
 				/>
 			) : (
 				<Text

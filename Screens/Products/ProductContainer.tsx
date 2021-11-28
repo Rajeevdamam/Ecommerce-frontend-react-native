@@ -1,6 +1,6 @@
 import FontAwesome from "@expo/vector-icons/build/FontAwesome";
 import { useFocusEffect } from "@react-navigation/core";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Dimensions, Keyboard, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Banner from "../../Components/Banner";
@@ -60,44 +60,44 @@ const ProductContainer = (props: any) => {
 			  ];
 	};
 
-	useFocusEffect(
-		useCallback(() => {
+	useEffect(() => {
+		setFocused(false);
+		setLoading(true);
+		getProducts()
+			.then((res: any) => {
+				setProducts(res.data.data);
+				setProductCategory(res.data.data);
+				setInitialState(res.data.data);
+				setLoading(false);
+			})
+			.catch((err: any) => {
+				console.log(err.message);
+				setLoading(false);
+			});
+
+		getProductCategories()
+			.then((res: any) => {
+				setCategories(res.data.data);
+				setLoading(false);
+			})
+			.catch((err: any) => {
+				console.log(err.message);
+				setLoading(false);
+			});
+
+		setActive(0);
+		return () => {
+			setProducts([]);
 			setFocused(false);
-			setLoading(true);
-			getProducts()
-				.then((res: any) => {
-					setProducts(res.data.data);
-					setProductCategory(res.data.data);
-					setInitialState(res.data.data);
-					setLoading(false);
-				})
-				.catch((err: any) => {
-					console.log(err.message);
-					setLoading(false);
-				});
-
-			getProductCategories()
-				.then((res: any) => {
-					setCategories(res.data.data);
-					setLoading(false);
-				})
-				.catch((err: any) => {
-					console.log(err.message);
-					setLoading(false);
-				});
-
-			setActive(0);
-			return () => {
-				setProducts([]);
-				setFocused(false);
-				setSearchResult([]);
-				setInitialState([]);
-				setCategories([]);
-				setActive(null);
-				setProductCategory([]);
-			};
-		}, [])
-	);
+			setSearchResult([]);
+			setInitialState([]);
+			setCategories([]);
+			setActive(null);
+			setProductCategory([]);
+			setLoading(false);
+			setSearchText("");
+		};
+	}, []);
 
 	return (
 		<View

@@ -17,10 +17,12 @@ let { width, height } = Dimensions.get("window");
 const ProductCard = (props: any) => {
 	const { title, price, image, category, rating, countInStock } = props;
 
+	const { navigation, ...data } = props;
+
 	const dispatch = useDispatch();
 
 	const handleAddToCart = () => {
-		dispatch(addToCart(props));
+		dispatch(addToCart(data));
 		// props.navigation.navigate("My Cart");
 	};
 

@@ -6,7 +6,7 @@
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",
 		"splash": {
-			"image": "./assets/splash.png",
+			"image": "./assets/logo.png",
 			"resizeMode": "contain",
 			"backgroundColor": "#ffffff"
 		},
@@ -15,16 +15,21 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
-			"supportsTablet": true
+			"supportsTablet": true,
+			"config":{
+				"googleSignIn":{
+					"reservedClientId":"com.googleusercontent.apps.312800137622-hpq5eoo4rq2a1omunhqbtqqgjjvs58k1"
+				}
+			}
 		},
 		"android": {
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
+				"foregroundImage": "./assets/icon.png",
 				"backgroundColor": "#FFFFFF"
 			}
 		},
 		"web": {
-			"favicon": "./assets/favicon.png"
+			"favicon": "./assets/logo.png"
 		},
 		"packagerOpts": {
 			"config": "metro.config.js",

@@ -80,6 +80,8 @@ const ProductsAccess = (props: any) => {
 				setProductList([]);
 				setProductFilter([]);
 				setLoading(true);
+				setSearchText("");
+				setToken("");
 			};
 		}, [])
 	);
@@ -131,17 +133,55 @@ const ProductsAccess = (props: any) => {
 				<Loading />
 			) : (
 				<View style={{ flex: 1 }}>
-					{/* <FlatList
+					<FlatList
 						data={productFilter}
 						ListHeaderComponent={ListHeader}
 						contentContainerStyle={{ paddingBottom: 10, flexGrow: 1 }}
+						stickyHeaderIndices={[0]}
 						renderItem={({ item, index }) => (
-							<ListItem {...item} navigation={props.navigation} index={index} />
+							<ListItem
+								{...item}
+								navigation={props.navigation}
+								index={index}
+								onDelete={handleDelete}
+							/>
 						)}
 						keyExtractor={(item: any) => item._id}
-					/> */}
+					/>
+				</View>
+			)}
+		</View>
+	);
+};
 
-					<DataTable>
+export default ProductsAccess;
+
+const styles = StyleSheet.create({
+	mainContainer: {
+		flex: 1,
+		backgroundColor: colors.colorPrimary,
+	},
+	listHeader: {
+		flexDirection: "row",
+		paddingHorizontal: 1,
+	},
+	headerItem: {
+		marginHorizontal: 1,
+		width: width / 6,
+		flex: 1,
+		borderRadius: 6,
+		paddingVertical: 5,
+		paddingHorizontal: 3,
+	},
+	headerText: {
+		fontFamily: "Montserrat-Bold",
+		fontSize: 12,
+		color: colors.colorSecondary,
+	},
+});
+
+{
+	/* <DataTable>
 						<DataTable.Header>
 							<DataTable.Title
 								style={{ justifyContent: "space-around", padding: 3 }}
@@ -187,34 +227,5 @@ const ProductsAccess = (props: any) => {
 							)}
 							keyExtractor={(item: any) => item._id}
 						/>
-					</DataTable>
-				</View>
-			)}
-		</View>
-	);
-};
-
-export default ProductsAccess;
-
-const styles = StyleSheet.create({
-	mainContainer: {
-		flex: 1,
-		backgroundColor: colors.colorPrimary,
-	},
-	listHeader: {
-		flexDirection: "row",
-		paddingHorizontal: 1,
-	},
-	headerItem: {
-		margin: 1,
-		width: width / 6,
-		flex: 1,
-		borderRadius: 6,
-		paddingVertical: 5,
-		paddingHorizontal: 3,
-	},
-	headerText: {
-		fontWeight: "700",
-		color: colors.colorSecondary,
-	},
-});
+					</DataTable> */
+}

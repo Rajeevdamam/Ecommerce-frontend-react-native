@@ -85,7 +85,7 @@ const ListItem = (props: any) => {
 				</Modal.Content>
 			</Modal>
 
-			{/* <TouchableOpacity
+			<TouchableOpacity
 				style={styles.container}
 				onPress={() =>
 					props.navigation.navigate("Product Detail", { item: props })
@@ -93,8 +93,8 @@ const ListItem = (props: any) => {
 				onLongPress={() => {
 					setModal(true);
 				}}
-			> */}
-			{/* <View
+			>
+				<View
 					style={[
 						styles.itemContainers,
 						{
@@ -118,7 +118,9 @@ const ListItem = (props: any) => {
 						},
 					]}
 				>
-					<Text style={styles.item}>{props.brand}</Text>
+					<Text style={styles.item} numberOfLines={1} ellipsizeMode="tail">
+						{props.brand}
+					</Text>
 				</View>
 				<View
 					style={[
@@ -161,9 +163,51 @@ const ListItem = (props: any) => {
 						},
 					]}
 				>
-					<Text style={styles.item}>₹{props.price}</Text>
-				</View> */}
-			<TouchableOpacity
+					<Text style={styles.item} numberOfLines={1} ellipsizeMode="tail">
+						₹{props.price}
+					</Text>
+				</View>
+			</TouchableOpacity>
+		</View>
+	);
+};
+
+export default ListItem;
+
+const styles = StyleSheet.create({
+	container: {
+		flexDirection: "row",
+		padding: 1,
+		width: width,
+		overflow: "hidden",
+	},
+	image: {
+		borderRadius: 50,
+		width: width / 7,
+		height: 20,
+		margin: 2,
+		resizeMode: "contain",
+	},
+	item: {
+		flexWrap: "wrap",
+		width: width / 6,
+		color: colors.colorSecondary,
+		fontFamily: "Montserrat-Regular",
+	},
+	itemContainers: {
+		borderRadius: 6,
+		alignItems: "center",
+		justifyContent: "center",
+		backgroundColor: colors.colorPrimary,
+		marginHorizontal: 1,
+		paddingVertical: 5,
+		paddingHorizontal: 3,
+		flex: 1,
+	},
+});
+
+{
+	/* <TouchableOpacity
 				onPress={() =>
 					props.navigation.navigate("Product Detail", { item: props })
 				}
@@ -199,41 +243,5 @@ const ListItem = (props: any) => {
 						{props.price}
 					</DataTable.Cell>
 				</DataTable.Row>
-			</TouchableOpacity>
-			{/* </TouchableOpacity> */}
-		</View>
-	);
-};
-
-export default ListItem;
-
-const styles = StyleSheet.create({
-	container: {
-		flexDirection: "row",
-		padding: 1,
-		width: width,
-		overflow: "hidden",
-	},
-	image: {
-		borderRadius: 50,
-		width: width / 7,
-		height: 20,
-		margin: 2,
-		resizeMode: "contain",
-	},
-	item: {
-		flexWrap: "wrap",
-		width: width / 6,
-		color: colors.colorSecondary,
-	},
-	itemContainers: {
-		borderRadius: 6,
-		alignItems: "center",
-		justifyContent: "center",
-		backgroundColor: colors.colorPrimary,
-		marginHorizontal: 1,
-		paddingVertical: 5,
-		paddingHorizontal: 3,
-		flex: 1,
-	},
-});
+			</TouchableOpacity> */
+}

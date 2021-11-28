@@ -18,10 +18,6 @@ const loginUser = async (data: any) => {
 	return user.data;
 };
 
-const getUser = (id: any) => {
-	return axios.get(`${baseURL}user/${id}`);
-};
-
 const updateUser = async (id: any, data: any) => {
 	let token = await AsyncStorage.getItem("JWTtoken");
 	let user = await axios.patch(
@@ -37,4 +33,8 @@ const updateUser = async (id: any, data: any) => {
 	return user.data;
 };
 
-export { registerUser, loginUser, getUser, updateUser };
+export const getOrdersByUser = async (id: any) => {
+	return axios.get(`${baseURL}orders//get/userorders/${id}`);
+};
+
+export { registerUser, loginUser, updateUser };

@@ -9,6 +9,8 @@ import ShippingOptions from "../Screens/User/ShippingOptions";
 import AboutPage from "../Screens/User/AboutPage";
 import PaymentCards from "../Screens/User/PaymentCards";
 import Support from "../Screens/User/Support";
+import UserOffers from "./../Screens/User/UserOffers";
+import TrackOrderDetails from "../Components/TrackOrderDetails";
 
 const { width, height } = Dimensions.get("window");
 
@@ -56,6 +58,11 @@ const ProfileNavigation = () => {
 						color: colors.colorSecondary,
 						fontFamily: "Montserrat-Bold",
 					},
+					headerStyle: {
+						elevation: 0,
+						shadowOpacity: 0,
+						borderBottomWidth: 0,
+					},
 				}}
 			></Stack.Screen>
 
@@ -96,10 +103,39 @@ const ProfileNavigation = () => {
 			></Stack.Screen>
 
 			<Stack.Screen
+				name="MyOffers"
+				component={UserOffers}
+				options={{
+					headerTitle: "My Offers",
+					headerTitleStyle: {
+						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
+					},
+				}}
+			></Stack.Screen>
+
+			<Stack.Screen
+				name="OrderTracking"
+				component={TrackOrderDetails}
+				options={{
+					headerTitle: "Track Order",
+					headerTitleStyle: {
+						color: colors.colorSecondary,
+						fontFamily: "Montserrat-Bold",
+					},
+					headerStyle: {
+						elevation: 0,
+						shadowOpacity: 0,
+						borderBottomWidth: 0,
+					},
+				}}
+			></Stack.Screen>
+
+			<Stack.Screen
 				name="AboutPage"
 				component={AboutPage}
 				options={{
-					headerTitle: "About Page",
+					headerTitle: "About",
 					headerTitleStyle: {
 						color: colors.colorSecondary,
 						fontFamily: "Montserrat-Bold",

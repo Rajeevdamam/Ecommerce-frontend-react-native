@@ -20,9 +20,10 @@ const { width, height } = Dimensions.get("window");
 const ProductDetail = (props: any) => {
 	const [productImages, setProductImages] = useState<string[]>([]);
 	const [item, setItem] = useState(props.route.params.item);
+	const { navigation, ...data } = item;
 	const dispatch = useDispatch();
 	const handleAddToCart = () => {
-		dispatch(addToCart(item));
+		dispatch(addToCart(data));
 		props.navigation.navigate("My Cart");
 	};
 

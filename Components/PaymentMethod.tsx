@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.colorTeritiary,
 		padding: 2,
 		width: width / 1.2,
+		height: width / 5,
 		justifyContent: "center",
 		alignItems: "center",
 	},
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
 	paymentType: {
 		color: colors.colorSecondary,
 		fontFamily: "Montserrat-Bold",
-		fontSize: 16,
+		fontSize: 15,
 	},
 	cardNumber: {
 		color: "grey",

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { useSelector } from "react-redux";
+import Toast from "react-native-toast-message";
+import { useDispatch, useSelector } from "react-redux";
 import CartItemComponent from "../../Components/CartItemComponent";
 import CustomButton from "../../Components/CustomButton";
 import EditShipping from "../../Components/EditShipping";
@@ -10,6 +11,8 @@ import PaymentSummary from "../../Components/PaymentSummary";
 import ShippingSummary from "../../Components/ShippingSummary";
 import SvgOrderConfirm from "../../Components/SvgOrderConfirm";
 import colors from "../../Constants/colors";
+import { clearCart } from "../../Redux/Actions/cartActions";
+import { addOrder } from "./OrderOperations";
 
 let { width, height } = Dimensions.get("window");
 
@@ -18,7 +21,16 @@ const Confirm = (props: any) => {
 
 	const [loading, setLoading] = useState(false);
 
+	const dispatch = useDispatch();
+
 	cartItem = Object.keys(cartItem).map((id: any) => cartItem[id]);
+
+	const orderItems = cartItem.map((item: any) => {
+		return {
+			product: item._id,
+			quantity: item.quantity,
+		};
+	});
 
 	const totalPrice = cartItem.reduce(
 		(a: number, b: any) => a + b.price * b.quantity,
@@ -33,6 +45,8 @@ const Confirm = (props: any) => {
 		(state: any) => state.paymentDetails.paymentData
 	);
 
+	const userId = useSelector((state: any) => state.userReducer.loggedInUser);
+
 	const openCloseModal = () => {
 		setModal(true);
 	};
@@ -46,6 +60,39 @@ const Confirm = (props: any) => {
 	useEffect(() => {
 		return () => {};
 	}, []);
+
+	const confirmOrder = () => {
+		const data = {
+			...shippingDetails,
+			orderItems: orderItems,
+			user: userId,
+		};
+
+		setLoading(true);
+		addOrder(data)
+			.then((res: any) => {
+				Toast.show({
+					topOffset: 60,
+					type: "success",
+					text1: "Order Successful",
+				});
+				setTimeout(() => {
+					setLoading(false);
+					dispatch(clearCart());
+					props.navigation.navigate("Cart");
+				}, 500);
+			})
+			.catch((err: any) => {
+				console.log(err.response.data);
+				setLoading(false);
+				Toast.show({
+					topOffset: 60,
+					type: "error",
+					text1: "Something went wrong!",
+					text2: "Please Try Again",
+				});
+			});
+	};
 
 	return (
 		<View style={styles.screen}>
@@ -107,7 +154,7 @@ const Confirm = (props: any) => {
 							disabled={false}
 							styles={styles.confirm}
 							styleText={styles.confirmText}
-							onPress={() => {}}
+							onPress={confirmOrder}
 							text="Confirm"
 						/>
 					</View>

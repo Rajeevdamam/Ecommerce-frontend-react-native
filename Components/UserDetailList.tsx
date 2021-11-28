@@ -16,7 +16,9 @@ const UserDetailList = (props: any) => {
 	return (
 		<TouchableOpacity
 			style={styles.mainContainer}
-			onPress={() => props.navigation.navigate(props.screen)}
+			onPress={() =>
+				props.navigation.navigate(props.screen, { params: props.params })
+			}
 		>
 			<View style={styles.avatarContainer}>
 				<Avatar
