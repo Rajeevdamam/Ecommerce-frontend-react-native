@@ -20,9 +20,6 @@ import * as Google from "expo-google-app-auth";
 import * as Facebook from "expo-facebook";
 import { FB_ANDROID_LOGIN_KEY, IOS_LOGIN_API_KEY } from "../../Constants/env";
 import { ANDROID_LOGIN_API_KEY } from "./../../Constants/env";
-import { registerUser } from "./UserOperations";
-import axios from "axios";
-import baseURL from "../../assets/common/baseurl";
 import Toast from "react-native-toast-message";
 
 let { height, width } = Dimensions.get("window");
